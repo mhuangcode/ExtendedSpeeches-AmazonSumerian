@@ -18,7 +18,7 @@ For my script I needed gestured speeches generated in real-time and I wanted to 
  
 
 ## Getting Started
-In your Amazon Sumerian project add `speechgen.gs`.
+In your Amazon Sumerian project add `speechgen.js`.
 
 To create a gestured speech construct a new object, `sumerian.gesturedSpeech()`.
 
