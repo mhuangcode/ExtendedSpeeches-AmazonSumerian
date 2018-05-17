@@ -490,24 +490,6 @@ function genSpeechGestures(speech, language) {
     return speech;
 }
 
-//generates speech with gestured speech body.
-function getSpeech(speechText, language, host) {
-    const newSpeech = new sumerian.Speech();
-    var pollyVoice = pollyVoices[language];
-
-    var gesturedSpeech = genSpeechGestures(speechText, language);
-
-    host.getComponent('SpeechComponent').addSpeech(newSpeech);
-
-    newSpeech.updateConfig({
-        entity: host,
-        body: gesturedSpeech,
-        voice: pollyVoice
-    });
-
-    return newSpeech;
-}
-
 //since asian words do not have whitespace in between each other
 //we will use index of to get a good guess of where and if there
 //is a valid word
