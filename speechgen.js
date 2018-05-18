@@ -1,5 +1,6 @@
 'use strict'
 
+
 //Project to expose auto-generate speech gestures for speeches in different language in Amazon Sumerian dynamically during play.
 
 //Speeches can be marked with gesture marks in Sumerian to trigger gestures/emotes for host.
@@ -457,25 +458,6 @@ function getRandomGenericGesture() {
     return genericGestures[i];
 }
 
-//Only used for western languages
-function getGestureForWord(word, map) {
-
-    for (let i = 0; i < map.length; i++) {
-        var gesture = map[i].gesture;
-        var words = map[i].words.split(',');
-
-        for (let ii = 0; ii < words.length; ii++) {
-            var trimmedWord = words[ii].trim();
-
-            if (word == trimmedWord) {
-                return gesture;
-            }
-        }
-    }
-
-    return 'null';
-}
-
 
 //main generation call
 function genSpeechGestures(speech, language) {
@@ -488,6 +470,24 @@ function genSpeechGestures(speech, language) {
     }
 
     return speech;
+}
+
+//generates speech with gestured speech body.
+function getSpeech(speechText, language, host) {
+    const newSpeech = new sumerian.Speech();
+    var pollyVoice = pollyVoices[language];
+
+    var gesturedSpeech = genSpeechGestures(speechText, language);
+
+    host.getComponent('SpeechComponent').addSpeech(newSpeech);
+
+    newSpeech.updateConfig({
+        entity: host,
+        body: gesturedSpeech,
+        voice: pollyVoice
+    });
+
+    return newSpeech;
 }
 
 //since asian words do not have whitespace in between each other
@@ -544,12 +544,12 @@ function genSpeechGesturesAsian(speech, map) {
 
 //Since western languages have whitespaces we can use that as a marker
 //for each word.
-//Same logic from create.js in sumerian when clicking on auto-generate
-//speech gestures for speeches in the editior.
+//Similar logic from create.js in sumerian when clicking on auto-generate
+//speech gestures for speeches in the editior. Only difference is the searching method.
 //Credits to the AWS Sumerian team.
 function genSpeechGesturesWestern(speech, map) {
 
-    //remove any gesture & ssml marks from speech
+   //remove any gesture & ssml marks from speech
     var speechText = speech.replace(markRegex, '');
 
     var gesturedSentences = [];
@@ -567,14 +567,16 @@ function genSpeechGesturesWestern(speech, map) {
 
     var whitespaceIndex = 0;
 
-    //split each word based on whitespace and evaluate
-    speechText.split(whitespaceRegex).forEach(function (word) {
-        var unPunctuationWord = word.replace(punctuationRegex, '');
-        var lowercaseWord = unPunctuationWord.toLowerCase();
+    let speechWords = speechText.split(whitespaceRegex);
 
-        var gesture = getGestureForWord(lowercaseWord, map);
+    var newGestures = getGestureForWords(speechWords, map);
 
-        if (gesture != "null") {
+    //Normal for loop for speed
+    for (let i = 0; i < speechWords.length; i++)
+    {
+		var word = speechWords[i];
+        if (newGestures[i] != "null") {
+            var gesture = newGestures[i];
             currentSentence.push('<mark name="gesture:' + gesture + '"/>' + word);
             bIsMarkedSentence = true;
         } else {
@@ -592,7 +594,7 @@ function genSpeechGesturesWestern(speech, map) {
             currentSentence.length = 0;
             bIsMarkedSentence = false;
         }
-    });
+    }
 
     //if final sentence does not have an ending punctuation
     if (currentSentence.length > 0) {
@@ -606,6 +608,48 @@ function genSpeechGesturesWestern(speech, map) {
     speech = '<speak>' + gesturedSentences.join('') + '</speak>';
     return speech;
 }
+
+
+//Faster searching for words, from tests I got around a 20x increase in speed
+function getGestureForWords(words, map) {
+
+
+    var cleanedWords = [];
+    var gesturesToAdd = [];
+
+    for (let i = 0; i < words.length; i++)
+    {
+        let word = words[i];
+        let unPunctuationWord = word.replace(punctuationRegex, '');
+        let lowercaseWord = unPunctuationWord.toLowerCase();
+        let trimmedWord = lowercaseWord.trim();
+
+        cleanedWords.push(trimmedWord);
+
+        gesturesToAdd.push('null');
+    }
+
+    for (let i = 0; i < map.length; i++)
+    {
+        var gesture = map[i].gesture;
+        var compareArray = map[i].words.split(',');
+
+        for (let ii = 0; ii < compareArray.length; ii++)
+        {
+            var compare = compareArray[ii];
+            var index = cleanedWords.indexOf(compare);
+
+            if (index > -1)
+            {
+                gesturesToAdd[index] = gesture;
+                break;
+            }
+        }
+    }
+
+    return gesturesToAdd;
+}
+
 
 //Credit to the AWS Sumerian team
 //returns joined sentence of gestured marks, words, and whitespaces
