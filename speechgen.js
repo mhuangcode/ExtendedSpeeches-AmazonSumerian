@@ -573,7 +573,7 @@ function genSpeechGesturesAsian(speech, map) {
 //Credits to the AWS Sumerian team.
 function genSpeechGesturesWestern(speech, map) {
 
-    //remove any gesture & ssml marks from speech
+   //remove any gesture & ssml marks from speech
     var speechText = speech.replace(markRegex, '');
 
     var gesturedSentences = [];
