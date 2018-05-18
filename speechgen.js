@@ -1,5 +1,6 @@
 'use strict'
 
+
 //Project to expose auto-generate speech gestures for speeches in different language in Amazon Sumerian dynamically during play.
 
 //Speeches can be marked with gesture marks in Sumerian to trigger gestures/emotes for host.
@@ -429,9 +430,18 @@ var languageMap = {
     "kr": mappingKorean
 };
 
+var languageNames = {
+    "en": 'English',
+    "fr": 'French',
+    "es": 'Spanish',
+    "ru": 'Russian',
+    "jp": 'Japanese',
+    "kr": 'Korean'
+}
+
 var asianLanguage = ["jp", "kr"];
 
-var pollyVoices = {
+var femaleVoices = {
     "en": "Salli",
     "fr": "Celine",
     "es": "Penelope",
@@ -439,6 +449,21 @@ var pollyVoices = {
     "jp": "Mizuki",
     "kr": "Seoyeon"
 };
+
+var maleVoices = {
+    "en": "Justin",
+    "fr": "Mathieu",
+    "es": "Miguel",
+    "ru": "Maxim",
+    "jp": "Takumi"
+}
+
+var genders = {
+    'male': maleVoices, 
+    'female': femaleVoices
+};
+
+var voices = ['Amy', 'Astrid', 'Brian', 'Carla', 'Carmen', 'Celine', 'Chantal', 'Conchita', 'Cristiano', 'Dora', 'Emma', 'Enrique', 'Ewa', 'Filiz', 'Geraint', 'Giorgio', 'Gwyneth', 'Hans', 'Ines', 'Ivy', 'Jacek', 'Jan', 'Joanna', 'Joey', 'Justin', 'Karl', 'Kendra', 'Kimberly', 'Liv', 'Lotte', 'Mads', 'Maja', 'Marlene', 'Mathieu', 'Matthew', 'Maxim', 'Miguel', 'Mizuki', 'Naja', 'Nicole', 'Penelope', 'Raveena', 'Ricardo', 'Ruben', 'Russell', 'Salli', 'Takumi', 'Tatyana', 'Vicki', 'Vitoria'];
 
 var whitespaceRegex = /\s+/g;
 var punctuationRegex = /[\.,\\\/\#\?!$%^&*;:{}\=\-\_`~()\[\]"']+/g;
@@ -457,25 +482,6 @@ function getRandomGenericGesture() {
     return genericGestures[i];
 }
 
-//Only used for western languages
-function getGestureForWord(word, map) {
-
-    for (let i = 0; i < map.length; i++) {
-        var gesture = map[i].gesture;
-        var words = map[i].words.split(',');
-
-        for (let ii = 0; ii < words.length; ii++) {
-            var trimmedWord = words[ii].trim();
-
-            if (word == trimmedWord) {
-                return gesture;
-            }
-        }
-    }
-
-    return 'null';
-}
-
 
 //main generation call
 function genSpeechGestures(speech, language) {
@@ -488,6 +494,24 @@ function genSpeechGestures(speech, language) {
     }
 
     return speech;
+}
+
+//generates speech with gestured speech body.
+function getSpeech(speechText, language, host) {
+    const newSpeech = new sumerian.Speech();
+    var pollyVoice = femaleVoices[language];
+
+    var gesturedSpeech = genSpeechGestures(speechText, language);
+
+    host.getComponent('SpeechComponent').addSpeech(newSpeech);
+
+    newSpeech.updateConfig({
+        entity: host,
+        body: gesturedSpeech,
+        voice: pollyVoice
+    });
+
+    return newSpeech;
 }
 
 //since asian words do not have whitespace in between each other
@@ -544,8 +568,8 @@ function genSpeechGesturesAsian(speech, map) {
 
 //Since western languages have whitespaces we can use that as a marker
 //for each word.
-//Same logic from create.js in sumerian when clicking on auto-generate
-//speech gestures for speeches in the editior.
+//Similar logic from create.js in sumerian when clicking on auto-generate
+//speech gestures for speeches in the editior. Only difference is the searching method.
 //Credits to the AWS Sumerian team.
 function genSpeechGesturesWestern(speech, map) {
 
@@ -560,21 +584,21 @@ function genSpeechGesturesWestern(speech, map) {
     var whitespace = speech.match(whitespaceRegex);
 
     //Prevent whitespace array from being defined as null when only a single word is entered.
-    if (whitespace == null)
-    {
+    if (whitespace == null) {
         whitespace = [];
     }
 
     var whitespaceIndex = 0;
 
-    //split each word based on whitespace and evaluate
-    speechText.split(whitespaceRegex).forEach(function (word) {
-        var unPunctuationWord = word.replace(punctuationRegex, '');
-        var lowercaseWord = unPunctuationWord.toLowerCase();
+    let speechWords = speechText.split(whitespaceRegex);
 
-        var gesture = getGestureForWord(lowercaseWord, map);
+    var newGestures = getGestureForWords(speechWords, map);
 
-        if (gesture != "null") {
+    //Normal for loop for speed
+    for (let i = 0; i < speechWords.length; i++) {
+        var word = speechWords[i];
+        if (newGestures[i] != "null") {
+            var gesture = newGestures[i];
             currentSentence.push('<mark name="gesture:' + gesture + '"/>' + word);
             bIsMarkedSentence = true;
         } else {
@@ -592,7 +616,7 @@ function genSpeechGesturesWestern(speech, map) {
             currentSentence.length = 0;
             bIsMarkedSentence = false;
         }
-    });
+    }
 
     //if final sentence does not have an ending punctuation
     if (currentSentence.length > 0) {
@@ -606,6 +630,43 @@ function genSpeechGesturesWestern(speech, map) {
     speech = '<speak>' + gesturedSentences.join('') + '</speak>';
     return speech;
 }
+
+
+//Faster searching for gestures
+function getGestureForWords(words, map) {
+
+    var cleanedWords = [];
+    var gesturesToAdd = [];
+
+    for (let i = 0; i < words.length; i++) {
+        let word = words[i];
+        let unPunctuationWord = word.replace(punctuationRegex, '');
+        let lowercaseWord = unPunctuationWord.toLowerCase();
+        let trimmedWord = lowercaseWord.trim();
+
+        cleanedWords.push(trimmedWord);
+
+        gesturesToAdd.push('null');
+    }
+
+    for (let i = 0; i < map.length; i++) {
+        var gesture = map[i].gesture;
+        var compareArray = map[i].words.split(',');
+
+        for (let ii = 0; ii < compareArray.length; ii++) {
+            var compare = compareArray[ii];
+            var index = cleanedWords.indexOf(compare);
+
+            if (index > -1) {
+                gesturesToAdd[index] = gesture;
+                break;
+            }
+        }
+    }
+
+    return gesturesToAdd;
+}
+
 
 //Credit to the AWS Sumerian team
 //returns joined sentence of gestured marks, words, and whitespaces
@@ -629,12 +690,57 @@ sumerian.gesturedSpeech = function () {
     this.speech = new sumerian.Speech();
     this.speechBody = "";
     this.gesturedBody = "";
+    this.configured = false;
     this.configureSpeech = function (speechText, language, host, autoGesture, voice) {
 
         host.getComponent('SpeechComponent').addSpeech(this.speech);
 
         var outputSpeech = speechText;
-        var pollyVoice = voice || pollyVoices[language];
+        var gender = voice.gender || 'female';
+
+        try {
+            if (!genders.hasOwnProperty(gender))
+            {
+                throw Error ('Invalid voice gender: ' + gender);
+            }
+        } catch(e) {
+            console.error(e);
+            return;
+        }
+
+        var voiceArray = genders[gender];
+
+        try {
+            if (!voiceArray.hasOwnProperty(language))
+            {
+                throw Error ('No valid voice for this language and gender combination: ' + languageNames[language] + ", " + gender);
+            }
+        } catch(e) {
+            console.error(e);
+            return;
+        }
+
+        var pollyVoice = voice.pollyName || voiceArray[language];
+
+        try {
+            if (!languageMap.hasOwnProperty(language))
+            {
+                throw Error('Invalid language: ' + language);
+            }
+
+            if (voices.indexOf(pollyVoice) == -1) {
+                throw Error('Invalid voice ID: ' + pollyVoice);
+            }
+
+            if (outputSpeech.length < 1)
+            {
+                throw Error('Length of speech text body < 1');
+            }
+
+        } catch (e) {
+            console.error(e);
+            return;
+        }
 
         if (autoGesture) {
             outputSpeech = genSpeechGestures(speechText, language);
@@ -648,5 +754,48 @@ sumerian.gesturedSpeech = function () {
 
         this.speechBody = speechText;
         this.gesturedBody = outputSpeech;
+        this.configured = true;
+    };
+
+    this.play = function(){
+        try {
+            if (!this.configured)
+            {
+                throw Error('Unconfigured speech, please configure before play attempt');
+            }
+
+            this.speech.play();
+        } catch(e) {
+            console.error(e);
+            return;
+        }
+    };
+
+    this.stop = function() {
+        try {
+            if (!this.configured)
+            {
+                throw Error('Unconfigured speech, please configure before stop attempt');
+            }
+
+            this.speech.stop(true);
+        } catch(e) {
+            console.error(e);
+            return;
+        }
+    };
+
+    this.pause = function() {
+        try {
+            if (!this.configured)
+            {
+                throw Error('Unconfigured speech, please configure before pause attempt');
+            }
+
+            this.speech.stop(false);
+        } catch(e) {
+            console.error(e);
+            return;
+        }
     };
 };
