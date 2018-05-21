@@ -3,8 +3,7 @@
 //Project to extend speeches in Amazon Sumerian
 
 //Martin Huang 
-//MHuangCode@gmail.com
-//https://www.github.com/MHuangCode/
+//https://github.com/MHuangCode/ExtendedSpeeches-AmazonSumerian
 
 //Speeches can be marked with gesture marks in Sumerian to trigger gestures/emotes for host.
 //The editor has a function for marks to be auto-generated with a click of a button! 
@@ -12,15 +11,6 @@
 
 //This project is an attempt to address this and extend upon the same function by including several
 //other languages.
-
-//This is important since host speeches uses the AWS Polly api to generate the speech audio and
-//is capable of speaking in several different languages.
-
-//For western languages we can use the same logic used by the Sumerian team, (create.js's function, generateGestureMarks)
-//seperating words by whitespaces, since each word in for example English is seperated by a space.
-
-//But for asian languages words include several characters and are not seperated by spaces, so the same
-//logic cannot be used to accurately evaluate words.
 
 //english word map from create.js
 var mappingEnglish = [{
@@ -469,15 +459,66 @@ var genders = {
     'female': femaleVoices
 };
 
-var voices = ['Amy', 'Astrid', 'Brian', 'Carla', 'Carmen', 'Celine', 'Chantal', 'Conchita', 'Cristiano', 'Dora', 'Emma', 'Enrique', 'Ewa', 'Filiz', 'Geraint', 'Giorgio', 'Gwyneth', 'Hans', 'Ines', 'Ivy', 'Jacek', 'Jan', 'Joanna', 'Joey', 'Justin', 'Karl', 'Kendra', 'Kimberly', 'Liv', 'Lotte', 'Mads', 'Maja', 'Marlene', 'Mathieu', 'Matthew', 'Maxim', 'Miguel', 'Mizuki', 'Naja', 'Nicole', 'Penelope', 'Raveena', 'Ricardo', 'Ruben', 'Russell', 'Salli', 'Takumi', 'Tatyana', 'Vicki', 'Vitoria'];
+var voices = [
+    'Aditi',
+    'Amy',
+    'Astrid',
+    'Brian',
+    'Carla',
+    'Carmen', 
+    'Celine', 
+    'Chantal', 
+    'Conchita', 
+    'Cristiano', 
+    'Dora', 
+    'Emma', 
+    'Enrique', 
+    'Ewa', 
+    'Filiz', 
+    'Geraint', 
+    'Giorgio', 
+    'Gwyneth', 
+    'Hans', 
+    'Ines', 
+    'Ivy', 
+    'Jacek', 
+    'Jan', 
+    'Joanna', 
+    'Joey', 
+    'Justin', 
+    'Karl', 
+    'Kendra', 
+    'Kimberly', 
+    'Liv', 
+    'Lotte', 
+    'Mads', 
+    'Maja', 
+    'Marlene', 
+    'Mathieu', 
+    'Matthew', 
+    'Maxim', 
+    'Miguel', 
+    'Mizuki', 
+    'Naja', 
+    'Nicole', 
+    'Penelope', 
+    'Raveena', 
+    'Ricardo', 
+    'Ruben', 
+    'Russell', 
+    'Salli',
+    'Seoyeon', 
+    'Takumi', 
+    'Tatyana', 
+    'Vicki', 
+    'Vitoria'
+];
 
 var whitespaceRegex = /\s+/g;
 var punctuationRegex = /[\.,\\\/\#\?!$%^&*;:{}\=\-\_`~()\[\]"']+/g;
 var sentenceEndRegex = /[.!?]$/;
 var markRegex = /<[^>]*>/g;
 
-//new prototype for strings to insert substring in the index
-//used for asian speeches
 String.prototype.splice = function (start, newSubString) {
     return this.slice(0, start) + newSubString + this.slice(start);
 };
@@ -594,7 +635,6 @@ function genSpeechGesturesWestern(speech, map) {
 
     var newGestures = getGestureForWords(speechWords, map);
 
-    //Normal for loop for speed
     for (let i = 0; i < speechWords.length; i++) {
         var word = speechWords[i];
         if (newGestures[i] != "null") {
