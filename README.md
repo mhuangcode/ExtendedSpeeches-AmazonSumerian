@@ -53,18 +53,18 @@ Then configure the speech by calling,
 
 #### Default Polly Voices:
 | - | Language | Voice Name | Gender | 
-|--|--|--|--|--|--|--|--|
-|en| English| Salli | female
-|en| English| Justin | male
-|fr| French| Celine | female
-|fr| French| Mathieu | male
-|es| Spanish| Penelope | female
-|es| Spanish| Miguel | male
-|ru| Russian| Tatyana | female
-|ru| Russian| Maxim | male
-|jp| Japanese| Mizuki | female
-|jp| Japanese| Takumi | male
-|kr| Korean| Seoyeon | female
+|--|--|--|--|
+|en| English| Salli | female |
+|en| English| Justin | male |
+|fr| French| Celine | female |
+|fr| French| Mathieu | male |
+|es| Spanish| Penelope | female |
+|es| Spanish| Miguel | male |
+|ru| Russian| Tatyana | female |
+|ru| Russian| Maxim | male |
+|jp| Japanese| Mizuki | female |
+|jp| Japanese| Takumi | male |
+|kr| Korean| Seoyeon | female |
 
 
 ## Examples:
