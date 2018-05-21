@@ -52,7 +52,7 @@ Then configure the speech by calling,
 |||`(optional)` - voice.pollyName = Voice to use, *will override voiceObject.gender if given*.
 
 #### Default Polly Voices:
-| | Language | Voice Name | Gender | 
+| - | Language | Voice Name | Gender | 
 |--|--|--|--|--|--|--|--|
 |en| English| Salli | female
 |en| English| Justin | male
