@@ -482,14 +482,19 @@ String.prototype.splice = function (start, newSubString) {
     return this.slice(0, start) + newSubString + this.slice(start);
 };
 
-//get a random generic gesture
+String.prototype.replaceWordAt = function (word, index) {
+    var endIndex = index + word.length;
+    var replaceWith = "-".repeat(word.length);
+    return this.slice(0, index) + this.slice(index, endIndex).replace(word, replaceWith) + this.slice(endIndex);
+};
+
 function getRandomGenericGesture() {
     var i = Math.floor(Math.random() * genericGestures.length);
     return genericGestures[i];
 }
 
 
-//main generation call
+//main function
 function genSpeechGestures(speech, language) {
     var map = languageMap[language];
 
@@ -502,24 +507,6 @@ function genSpeechGestures(speech, language) {
     return speech;
 }
 
-//generates speech with gestured speech body.
-function getSpeech(speechText, language, host) {
-    const newSpeech = new sumerian.Speech();
-    var pollyVoice = femaleVoices[language];
-
-    var gesturedSpeech = genSpeechGestures(speechText, language);
-
-    host.getComponent('SpeechComponent').addSpeech(newSpeech);
-
-    newSpeech.updateConfig({
-        entity: host,
-        body: gesturedSpeech,
-        voice: pollyVoice
-    });
-
-    return newSpeech;
-}
-
 //since asian words do not have whitespace in between each other
 //we will use index of to get a good guess of where and if there
 //is a valid word
@@ -530,6 +517,7 @@ function genSpeechGesturesAsian(speech, map) {
     var bMarkedSpeech = false;
 
     var speechText = speech.replace(markRegex, '');
+    var dirtyText = speechText;
 
     for (let i = 0; i < map.length; i++) {
         let gesture = map[i].gesture;
@@ -537,13 +525,15 @@ function genSpeechGesturesAsian(speech, map) {
 
         for (let ii = 0; ii < words.length; ii++) {
             let trimmedWord = words[ii].trim();
-            let index = speechText.indexOf(trimmedWord);
+            let index = dirtyText.indexOf(trimmedWord);
 
             //need to keep check that there are not more than 1 gesture per word
-            if (index > -1 && indicies.indexOf(index) == -1) {
+            while (index > -1 && indicies.indexOf(index) == -1) {
                 indicies.push(index);
                 gesturesToAdd.set(index, gesture);
                 bMarkedSpeech = true;
+                dirtyText = dirtyText.replaceWordAt(trimmedWord, index);
+                index = dirtyText.indexOf(trimmedWord);
             }
         }
     }
@@ -831,3 +821,9 @@ sumerian.gesturedSpeech = function () {
         return false;
     };
 };
+
+
+var test = "こんにちは私の名前はpollyです。こんにちは私の名前はpollyです。こんにちは私の名前はpollyです。こんにちは私の名前はpollyです。";
+var output = genSpeechGesturesAsian(test, mappingJapanese);
+
+console.log(output);
