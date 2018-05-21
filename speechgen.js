@@ -515,7 +515,7 @@ var voices = [
 ];
 
 var whitespaceRegex = /\s+/g;
-var punctuationRegex = /[\.,\\\/\#\?!$%^&*;:{}\=\-\_`~()\[\]"']+/g;
+var punctuationRegex = /[\.,\\\/\#\?¡!$%^&*;:{}\=\-\_`~()\[\]"']+/g;
 var sentenceEndRegex = /[.!?]$/;
 var markRegex = /<[^>]*>/g;
 
