@@ -1,8 +1,10 @@
-# Dynamic Gesture Marks for Amazon Sumerian Host Speeches
+# Extending Speeches for Amazon Sumerian's Host Speeches
 
-Amazon Sumerian's host features speeches that uses ssml tags/marks to trigger gestures at stated positions within the speech text body. A feature exists in the editor to allow gestures to be auto generated within the editor, but this feature cannot be called while in play. This is a scenario I encountered and so this is my attempt to create a method to create speech marks dynamically.
+Amazon Sumerian features host entities which has a speech component, which calls Amazon Polly to generate audio from text that is spoken by the host. The speech body may contain simply text, or text in combination with SSML and gesture marks/tags. SSML marks/tags are used by Polly to create a more customized audio output, while gestures triggers animations for hosts to be played at the stated position in the speech. The focus for this script is gesture marks and it's generation in live environments.
 
-For my script I needed gestured speeches generated in real-time and I wanted to extend the function to not only support English but several of other languages, including Asian languages.
+Currently speeches can be created while in play/real-time, but the only method of automatically generating dynamic gesture marks is within the Sumerian Editor (out of play). This is great for static speeches that are predefined by the author, but there is no easy way to add marks/tags for speeches dynamically while in play.
+
+This script is an attempt to extend speeches by adding the ability to procedurally generate gesture marks in dynamic environments.
 
 To further extend speeches, there is a custom function to keep track of if a speech has finish speaking. 
 
@@ -11,7 +13,7 @@ To further extend speeches, there is a custom function to keep track of if a spe
 >  - Support for multiple languages (English, Spanish, French, Russian, Japanese, & Korean).
 >  - Automatic Amazon Polly voice selection based on language.
 >   - Function to check if speech has finished playing.
-> 
+ 
 > #### Prerequisites:
 >  - Amazon Sumerian
 >  - Amazon Cognito
@@ -20,7 +22,7 @@ To further extend speeches, there is a custom function to keep track of if a spe
  
 
 ## Getting Started
-In your Amazon Sumerian project add `speechgen.gs`.
+In your Amazon Sumerian project add `speechgen.js`.
 
 To create a gestured speech construct a new object, `sumerian.gesturedSpeech()`.
 
@@ -101,13 +103,15 @@ An example with voice parameter.  -> *Note: Not all languages have both a male a
 
 > Expected Polly voice for speech: `'Mathieu'`
 
-There are more than 1 voice for some languages in the Amazon Polly API. You can select a custom voice by declaring it in voiceObject.pollyName as a string.  [Click here for list of voices available.](https://docs.aws.amazon.com/polly/latest/dg/voicelist.html)
+*There are more than 1 voice for some languages in the Amazon Polly API. You can select a custom voice by declaring it in voiceObject.pollyName as a string.* 
+
+ [Click here](https://docs.aws.amazon.com/polly/latest/dg/voicelist.html)  for list of Polly voices.
 
 > **Tips:**
 >  
 > 
 >  - Language parameter does not need to match voice language, but is recommended.
->  - Language parameter does not need to match text body's language either, but will only generate generic gestures if so.
+>  - Language parameter does not need to match text body's language either, but will only add generic gestures if so.
 
 
 
@@ -115,9 +119,12 @@ There are more than 1 voice for some languages in the Amazon Polly API. You can 
 
 Credits the Amazon Sumerian team, the method was borrowed from their own function for auto generation of marks in the editor. This method worked for western languages since they were using white spaces in between words as a marker of where words are in a string.
 
-This method did not work for Asian languages like in this example (Korean & Japanese). Asian languages do not require spaces in between words so there is no easy way to differentiate what is one word or another. What I ended up doing was searching the string for the same combination of characters to search for the word. 
+But this method did not work for Asian languages, for example (Korean & Japanese). Asian languages do not require spaces in between words, so there is no easy way to differentiate what is one word or another. The method I ended finding the most effective was searching the speech for the same combination of characters which make up the word. 
+
+I also did some adjustments to increase the mark for generation. This may be important when there is a long speeches to prevent stuttering.
 
 [Read more about Amazon Polly's ssml tags/marks here.](https://docs.aws.amazon.com/polly/latest/dg/supported-ssml.html)
+
 [Amazon Sumerian Homepage](https://aws.amazon.com/sumerian/)
 
 ## Contact
