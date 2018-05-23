@@ -465,52 +465,52 @@ var voices = [
     'Astrid',
     'Brian',
     'Carla',
-    'Carmen', 
-    'Celine', 
-    'Chantal', 
-    'Conchita', 
-    'Cristiano', 
-    'Dora', 
-    'Emma', 
-    'Enrique', 
-    'Ewa', 
-    'Filiz', 
-    'Geraint', 
-    'Giorgio', 
-    'Gwyneth', 
-    'Hans', 
-    'Ines', 
-    'Ivy', 
-    'Jacek', 
-    'Jan', 
-    'Joanna', 
-    'Joey', 
-    'Justin', 
-    'Karl', 
-    'Kendra', 
-    'Kimberly', 
-    'Liv', 
-    'Lotte', 
-    'Mads', 
-    'Maja', 
-    'Marlene', 
-    'Mathieu', 
-    'Matthew', 
-    'Maxim', 
-    'Miguel', 
-    'Mizuki', 
-    'Naja', 
-    'Nicole', 
-    'Penelope', 
-    'Raveena', 
-    'Ricardo', 
-    'Ruben', 
-    'Russell', 
+    'Carmen',
+    'Celine',
+    'Chantal',
+    'Conchita',
+    'Cristiano',
+    'Dora',
+    'Emma',
+    'Enrique',
+    'Ewa',
+    'Filiz',
+    'Geraint',
+    'Giorgio',
+    'Gwyneth',
+    'Hans',
+    'Ines',
+    'Ivy',
+    'Jacek',
+    'Jan',
+    'Joanna',
+    'Joey',
+    'Justin',
+    'Karl',
+    'Kendra',
+    'Kimberly',
+    'Liv',
+    'Lotte',
+    'Mads',
+    'Maja',
+    'Marlene',
+    'Mathieu',
+    'Matthew',
+    'Maxim',
+    'Miguel',
+    'Mizuki',
+    'Naja',
+    'Nicole',
+    'Penelope',
+    'Raveena',
+    'Ricardo',
+    'Ruben',
+    'Russell',
     'Salli',
-    'Seoyeon', 
-    'Takumi', 
-    'Tatyana', 
-    'Vicki', 
+    'Seoyeon',
+    'Takumi',
+    'Tatyana',
+    'Vicki',
     'Vitoria'
 ];
 
@@ -535,11 +535,11 @@ String.prototype.replaceCharAt = function (character, index) {
     return this.slice(0, index) + character + this.slice(endIndex);
 };
 
-Array.prototype.remove = function(from, to) {
+Array.prototype.remove = function (from, to) {
     var rest = this.slice((to || from) + 1 || this.length);
     this.length = from < 0 ? this.length + from : from;
     return this.push.apply(this, rest);
-  };
+};
 
 function getRandomGenericGesture() {
     var i = Math.floor(Math.random() * genericGestures.length);
@@ -565,17 +565,21 @@ function getAsianSentences(speech) {
     var sentenceEnd = speech.search(sentenceEndRegexAsian, 0);
     var sentences = [];
 
-    while (sentenceEnd > -1)
-    {
-        sentences.push({start: sentenceStart, end: sentenceEnd});
+    while (sentenceEnd > -1) {
+        sentences.push({
+            start: sentenceStart,
+            end: sentenceEnd
+        });
         sentenceStart = sentenceEnd + 1;
         speech = speech.replaceCharAt("-", sentenceEnd);
         sentenceEnd = speech.search(sentenceEndRegexAsian, 0);
     }
 
-    if (sentenceEnd != speech.length)
-    {
-        sentences.push({start: sentenceStart, end:speech.length});
+    if (sentenceEnd != speech.length) {
+        sentences.push({
+            start: sentenceStart,
+            end: speech.length
+        });
     }
 
     return sentences;
@@ -607,15 +611,13 @@ function genSpeechGesturesAsian(speech, map) {
             while (index > -1 && indicies.indexOf(index) == -1) {
                 indicies.push(index);
                 gesturesToAdd.set(index, gesture);
-                
-                for (let iii = 0; iii < sentences.length; iii++)
-                {
+
+                for (let iii = 0; iii < sentences.length; iii++) {
                     let start = sentences[iii].start;
                     let end = sentences[iii].end;
 
                     //Set sentence marked if it isn't already.
-                    if (index >= start && index <= end)
-                    {
+                    if (index >= start && index <= end) {
                         sentences.remove(iii, iii + 1);
                         break;
                     }
@@ -628,13 +630,12 @@ function genSpeechGesturesAsian(speech, map) {
     }
 
     //Check if each sentence has a gesture, if not find a random one
-    for (let i = 0; i < sentences.length; i++)
-    {
+    for (let i = 0; i < sentences.length; i++) {
         let index = sentences[i].start;
         let randomGesture = getRandomGenericGesture();
         indicies.push(index);
         gesturesToAdd.set(index, randomGesture);
-        
+
     }
 
     //Sort from right to left of the positions where gesture marks should be inserted

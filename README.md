@@ -100,6 +100,7 @@ An example with voice parameter.  -> *Note: Not all languages have both a male a
 		var newGesturedSpeech = new sumerian.gesturedSpeech();
 		newGesturedSpeech.configureSpeech(speechText, 'en', host, true, voiceData);
 		newGesturedSpeech.play();
+    }
 
 > Expected Polly voice for speech: `'Mathieu'`
 
