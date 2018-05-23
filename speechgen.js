@@ -75,7 +75,7 @@ var mappingEnglish = [{
 
 }, {
     gesture: 'agreement',
-    words: 'agree, agrees, agreed, join, joined, joins, joining, patrner, patrnered, patrners, patrnering, relationship, share, shared, sharing, shares, together, togetherness, linked, links, link, linking'
+    words: 'agree, agrees, agreed, join, joined, joins, joining, partner, partnered, partners, partnering, relationship, share, shared, sharing, shares, together, togetherness, linked, links, link, linking'
 
 }, {
     gesture: 'face',
@@ -147,7 +147,7 @@ var mappingFrench = [{
 
 }, {
     gesture: 'agreement',
-    words: "d'accord, de rejoindre, rejoint, rejoindre, patrner, patrons, patrnering, relation, partager, partagé, partage, part, ensemble, togetherness, lié, liens, link, linking"
+    words: "d'accord, de rejoindre, rejoint, rejoindre, partenaire, partenaire, partenaires, partenariat, relation, partager, partagé, partage, part, ensemble, togetherness, lié, liens, link, linking"
 
 }, {
     gesture: 'face',
@@ -155,7 +155,7 @@ var mappingFrench = [{
 
 }, {
     gesture: 'negative',
-    words: 'dégoût, dégoûté, grossier, vil, laid, eew, slimey, creepy, fait, méchant, assez, sans, jamais, nevermore, ne veut pas, wouldnt, shouldnt, ne pas, non, aucun, jamais, rien, nada'
+    words: 'dégoût, dégoûté, grossier, vil, laid, eew, slimey, creepy, fait, méchant, assez, sans, jamais, nevermore, ne veut pas, ne pas, non, aucun, jamais, rien, nada'
 }];
 //////////////
 var mappingSpanish = [{
@@ -202,7 +202,7 @@ var mappingSpanish = [{
 
 }, {
     gesture: 'small',
-    words: 'pequena, menos, itty, por lo menos, pequeña, pocos, pizca, poco, minúsculo, micro, miniatura, eensy, wee, corta, casi, DAB, mota'
+    words: 'pequena, menos, itty, por lo menos, pequeña, pocos, pizca, poco, minúsculo, micro, miniatura, eensy, wee, corta, casi, dab, mota'
 
 }, {
     gesture: 'before',
@@ -218,7 +218,7 @@ var mappingSpanish = [{
 
 }, {
     gesture: 'agreement',
-    words: 'de acuerdo, unir, uniones, unión, patrner, patrnered, Patrners, patrnering, relación, acción, compartida, el intercambio, las acciones, junto, unidad, unido, links, enlaces, que une'
+    words: 'de acuerdo, unir, uniones, unión, socio, socios, socios, asociación, relación, acción, compartida, el intercambio, las acciones, junto, unidad, unido, links, enlaces, que une'
 
 }, {
     gesture: 'face',
@@ -260,11 +260,11 @@ var mappingRussian = [{
 
 }, {
     gesture: 'you',
-    words: "Вы, Yall, y'all, ваш, ваша, ты, твой"
+    words: "вы, Yall, y'all, ваш, ваша, ты, твой"
 
 }, {
     gesture: 'defense',
-    words: 'оборона, страх, отбиты, страшно, страшней, страшный, боясь, приседать, съеживается, съежившись, отвратительный, обречено, ужас, ужасает, ужасает ужас, похожийпривидение, spookier, spookiest'
+    words: 'оборона, страх, отбиты, страшно, страшней, страшный, боясь, приседать, съеживается, съежившись, отвратительный, обречено, ужас, ужасает, ужасает ужас, похожийпривидение'
 
 }, {
     gesture: 'wave',
@@ -272,7 +272,7 @@ var mappingRussian = [{
 
 }, {
     gesture: 'self',
-    words: "Боже, я, Ive, мне, мое"
+    words: "боже, я, Ive, мне, мое"
 
 }, {
     gesture: 'small',
@@ -292,7 +292,7 @@ var mappingRussian = [{
 
 }, {
     gesture: 'agreement',
-    words: 'согласен, соглашается, согласился присоединиться, присоединились, присоединяется, присоединение, patrner, patrnered, patrners, patrnering, отношения, общие, обмен, акция, вместе, единение, связаны между, ссылки'
+    words: 'согласен, соглашается, согласился присоединиться, присоединились, присоединяется, присоединение, партнера, партнеров, отношения, общие, обмен, акция, вместе, единение, связаны между, ссылки'
 
 }, {
     gesture: 'face',
@@ -300,7 +300,7 @@ var mappingRussian = [{
 
 }, {
     gesture: 'negative',
-    words: 'отвращение, валовые, мерзкий, некрасивый, ЭВП, Slimey, жуткое, сделано, неприятный, достаточно, не, никогда больше, привычка, Wouldnt,должны,не нет, Нету, ни, никогда, ничего, нада'
+    words: 'отвращение, валовые, мерзкий, некрасивый, ЭВП, жуткое, сделано, неприятный, достаточно, не, никогда больше, привычка, должны, не нет, Нету, ни, никогда, ничего, нада'
 }];
 /////////////////
 var mappingJapanese = [{
@@ -323,13 +323,13 @@ var mappingJapanese = [{
     words: '一度, 第一, まず, 唯一, ソロ, 単独で, 真に, アップ, 警告, 一つの単一'
 }, {
     gesture: 'aggressive',
-    words: 'パワー, 強力, 主張, 自己主張, 強い, 最強, 強さ, フレックス, 一顧, いまいましい, damnit, くそ, shucks, DOH, DRAT, 怒り, angrier, angriest, 積極的な, イライラ, 迷惑な, 攻撃, 戦闘'
+    words: 'パワー, 強力, 主張, 自己主張, 強い, 最強, 強さ, フレックス, 一顧, いまいましい, くそ, 怒り, 積極的な, イライラ, 迷惑な, 攻撃, 戦闘'
 }, {
     gesture: 'you',
     words: "ヤオール, y'allの, あなた, あなたの"
 }, {
     gesture: 'defense',
-    words: '防衛, 撃退, 怖い, 恐れ, 萎縮, cowers, 戦慄, 恐ろしい, 運命, 恐怖, 恐怖に陥れるに恐ろしい, 幽霊, spookier, spookiest'
+    words: '防衛, 撃退, 怖い, 恐れ, 萎縮, cowers, 戦慄, 恐ろしい, 運命, 恐怖, 恐怖に陥れるに恐ろしい, 幽霊, すごい、恐るべき'
 }, {
     gesture: 'wave',
     words: 'adios, オラ, さようなら, ちょっと, へや, アロハ, 歓迎, こんにちは, hiya, HI, ハロー, チャオ'
@@ -338,7 +338,7 @@ var mappingJapanese = [{
     words: "自己, 私は, アイブ, 私, 鉱山をしました"
 }, {
     gesture: 'small',
-    words: 'より少ない, 少し, itty, 少なくとも, 小さな, ほとんど, 少数, smidge, TAD, 非常に小さい, マイクロ, 小型, eensy, WEE, 短い, ほぼ, DAB, スペック'
+    words: 'より少ない, 少し, itty, 少なくとも, 小さな, ほとんど, 少数, 非常に小さい, マイクロ, 小型, 短い, ほぼ, スペック'
 }, {
     gesture: 'before',
     words: ' すでに, 前に, 忘れて, 始め, かつて, 歴史, から, 過去'
@@ -350,7 +350,7 @@ var mappingJapanese = [{
     words: ', 適用に対する適用, 適用される, と主張, 事務所, 強制的に, 力を強制的に, ハード, ヒット, ヒットし, インパクト, 影響, 影響を受け, 衝撃, 物理的, 脅威, 戦争, 戦い, 戦闘戦いました'
 }, {
     gesture: 'agreement',
-    words: '同意する, 同意し, 参加, 結合, 接合, patrner, patrnered, patrners, patrnering, 関係, 共有, 一緒に, 一緒, リンクされ, リンク'
+    words: '同意する, 同意し, 参加, 結合, 接合, パートナー, 関係, 共有, 一緒に, 一緒, リンクされ, リンク'
 }, {
     gesture: 'face',
     words: '目, 髪, 頭, 想像, 想像し, 知識, 口, 覚えて, 見る, 見て, 考える, 思考, 考えては, と思いました'
@@ -385,7 +385,7 @@ var mappingKorean = [{
     words: "yall를, 모두들, 당신의, 당신, 그대, 네"
 }, {
     gesture: 'defense',
-    words: '방어, 두려움, 격퇴, 무서워, 무서운는 두려움, 걱정, 겁쟁이, cowers, 위축, 무시 무시한, 운명, 겁에 질린, 무섭게, 유령을, spookier, spookiest 무서운, 겁'
+    words: '방어, 두려움, 격퇴, 무서워, 무서운는 두려움, 걱정, 겁쟁이, 위축, 무시 무시한, 운명, 겁에 질린, 무섭게, 유령을, 초라한, 무서운, 겁'
 }, {
     gesture: 'wave',
     words: '여보세요, heya, 알로하, 안녕, 차오'
@@ -394,7 +394,7 @@ var mappingKorean = [{
     words: "내, 내가, 나 자신, 자기, 난, 필자 나, 내했습니다"
 }, {
     gesture: 'small',
-    words: '이티, 적어도, 작은, smidge, 약간, 소문자, 마이크로, 소형, eensy, 꼬마, 짧은, 거의, DAB, 반점'
+    words: '이티, 적어도, 작은, 약간, 소문자, 마이크로, 소형, 꼬마, 짧은, 거의, 반점'
 }, {
     gesture: 'before',
     words: '전에, 이미 이전에, 먼저, 역사,에서, 전 잊지 과거의 시작'
@@ -406,7 +406,7 @@ var mappingKorean = [{
     words: '에 적용, 주장, 회사, 힘, 강요, 강제, 하드, 명중, 전투, 충격, 충격을 가하는 물리적, 위협, 전쟁, 싸움, 타격, 싸웠고'
 }, {
     gesture: 'agreement',
-    words: '동의, 가입, 결합, patrner, patrnered, patrners, patrnering, 관계, 공유, 함께, 공생, 링크'
+    words: '동의, 가입, 결합, 파트너, 파트너 관계, 관계, 공유, 함께, 공생, 링크'
 }, {
     gesture: 'face',
     words: '눈, 머리, 상상, 지식, 입, 는, 기억, 생각, 보고, 생각을 참조 기억한다 상상 상상'
@@ -515,8 +515,9 @@ var voices = [
 ];
 
 var whitespaceRegex = /\s+/g;
-var punctuationRegex = /[\.,\\\/\#\?¡!$%^&*;:{}\=\-\_`~()\[\]"']+/g;
-var sentenceEndRegex = /[.!?]$/;
+var punctuationRegex = /[\.。,、\\\/\#\?？¡!!$%^&*;:{}\=\-\_`~()\[\]"']+/g;
+var sentenceEndRegex = /[.。!!?？]$/;
+var sentenceEndRegexAsian = /[.。!!?？]/g;
 var markRegex = /<[^>]*>/g;
 
 String.prototype.splice = function (start, newSubString) {
@@ -528,6 +529,17 @@ String.prototype.replaceWordAt = function (word, index) {
     var replaceWith = "-".repeat(word.length);
     return this.slice(0, index) + this.slice(index, endIndex).replace(word, replaceWith) + this.slice(endIndex);
 };
+
+String.prototype.replaceCharAt = function (character, index) {
+    var endIndex = index + 1;
+    return this.slice(0, index) + character + this.slice(endIndex);
+};
+
+Array.prototype.remove = function(from, to) {
+    var rest = this.slice((to || from) + 1 || this.length);
+    this.length = from < 0 ? this.length + from : from;
+    return this.push.apply(this, rest);
+  };
 
 function getRandomGenericGesture() {
     var i = Math.floor(Math.random() * genericGestures.length);
@@ -548,6 +560,27 @@ function genSpeechGestures(speech, language) {
     return speech;
 }
 
+function getAsianSentences(speech) {
+    var sentenceStart = 0;
+    var sentenceEnd = speech.search(sentenceEndRegexAsian, 0);
+    var sentences = [];
+
+    while (sentenceEnd > -1)
+    {
+        sentences.push({start: sentenceStart, end: sentenceEnd});
+        sentenceStart = sentenceEnd + 1;
+        speech = speech.replaceCharAt("-", sentenceEnd);
+        sentenceEnd = speech.search(sentenceEndRegexAsian, 0);
+    }
+
+    if (sentenceEnd != speech.length)
+    {
+        sentences.push({start: sentenceStart, end:speech.length});
+    }
+
+    return sentences;
+}
+
 //since asian words do not have whitespace in between each other
 //we will use index of to get a good guess of where and if there
 //is a valid word
@@ -555,10 +588,12 @@ function genSpeechGesturesAsian(speech, map) {
 
     var gesturesToAdd = new Map();
     var indicies = [];
-    var bMarkedSpeech = false;
 
     var speechText = speech.replace(markRegex, '');
     var dirtyText = speechText;
+
+    var sentences = getAsianSentences(speech);
+
 
     for (let i = 0; i < map.length; i++) {
         let gesture = map[i].gesture;
@@ -572,18 +607,34 @@ function genSpeechGesturesAsian(speech, map) {
             while (index > -1 && indicies.indexOf(index) == -1) {
                 indicies.push(index);
                 gesturesToAdd.set(index, gesture);
-                bMarkedSpeech = true;
+                
+                for (let iii = 0; iii < sentences.length; iii++)
+                {
+                    let start = sentences[iii].start;
+                    let end = sentences[iii].end;
+
+                    //Set sentence marked if it isn't already.
+                    if (index >= start && index <= end)
+                    {
+                        sentences.remove(iii, iii + 1);
+                        break;
+                    }
+                }
+
                 dirtyText = dirtyText.replaceWordAt(trimmedWord, index);
                 index = dirtyText.indexOf(trimmedWord);
             }
         }
     }
 
-    //If speech is not have a gesture at all, add a random gesture.
-    if (!bMarkedSpeech) {
-        var randomGesture = getRandomGenericGesture();
-        indicies.push(0);
-        gesturesToAdd.set(0, randomGesture);
+    //Check if each sentence has a gesture, if not find a random one
+    for (let i = 0; i < sentences.length; i++)
+    {
+        let index = sentences[i].start;
+        let randomGesture = getRandomGenericGesture();
+        indicies.push(index);
+        gesturesToAdd.set(index, randomGesture);
+        
     }
 
     //Sort from right to left of the positions where gesture marks should be inserted
