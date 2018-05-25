@@ -520,26 +520,28 @@ var sentenceEndRegex = /[.。!!?？]$/;
 var sentenceEndRegexAsian = /[.。!!?？]/g;
 var markRegex = /<[^>]*>/g;
 
-String.prototype.splice = function (start, newSubString) {
-    return this.slice(0, start) + newSubString + this.slice(start);
-};
 
-String.prototype.replaceWordAt = function (word, index) {
+function spliceString(str, start, newSubString) {
+    return str.slice(0, start) + newSubString + str.slice(start);
+}
+
+function replaceWordAt(str, word, index) {
     var endIndex = index + word.length;
     var replaceWith = "-".repeat(word.length);
-    return this.slice(0, index) + this.slice(index, endIndex).replace(word, replaceWith) + this.slice(endIndex);
-};
+    return str.slice(0, index) + str.slice(index, endIndex).replace(word, replaceWith) + str.slice(endIndex);
+}
 
-String.prototype.replaceCharAt = function (character, index) {
+function replaceCharAt(str, character, index) {
     var endIndex = index + 1;
-    return this.slice(0, index) + character + this.slice(endIndex);
+    return str.slice(0, index) + character + str.slice(endIndex);
 };
 
-Array.prototype.remove = function (from, to) {
-    var rest = this.slice((to || from) + 1 || this.length);
-    this.length = from < 0 ? this.length + from : from;
-    return this.push.apply(this, rest);
-};
+
+function removeElement(array, from, to) {
+    var rest = array.slice((to || from) + 1 || array.length);
+    array.length = from < 0 ? array.length + from : from;
+    return array.push.apply(array, rest);
+}
 
 function getRandomGenericGesture() {
     var i = Math.floor(Math.random() * genericGestures.length);
@@ -571,7 +573,7 @@ function getAsianSentences(speech) {
             end: sentenceEnd
         });
         sentenceStart = sentenceEnd + 1;
-        speech = speech.replaceCharAt("-", sentenceEnd);
+        speech = replaceCharAt(speech, "-", sentenceEnd);
         sentenceEnd = speech.search(sentenceEndRegexAsian, 0);
     }
 
@@ -618,12 +620,12 @@ function genSpeechGesturesAsian(speech, map) {
 
                     //Set sentence marked if it isn't already.
                     if (index >= start && index <= end) {
-                        sentences.remove(iii, iii + 1);
+                        sentences = removeElement(sentences, iii, iii + 1);
                         break;
                     }
                 }
 
-                dirtyText = dirtyText.replaceWordAt(trimmedWord, index);
+                dirtyText = replaceWordAt(dirtyText, trimmedWord, index);
                 index = dirtyText.indexOf(trimmedWord);
             }
         }
@@ -876,6 +878,7 @@ sumerian.gesturedSpeech = function () {
             }
 
             this.speech.stop(true);
+            this.wordIndex = -1;
         } catch (e) {
             console.error(e);
             return;
@@ -893,6 +896,36 @@ sumerian.gesturedSpeech = function () {
             console.error(e);
             return;
         }
+    };
+
+    this.restart = function() {
+        try {
+            if (!this.configured) {
+                throw Error('Unconfigured speech, please configure before pause attempt');
+            }
+
+            this.stop();
+            this.play();
+        } catch(e) {
+            console.error(e);
+            return;
+        }
+    };
+
+    this.getSentences = function(){
+        return this.speech._speechMarks.sentence;
+    };
+
+    this.getWordIndex = function() {
+        return this.speech._currentWordMarkIndex;
+    };
+
+    this.getWords = function() {
+        return this.speech._speechMarks.word;
+    };
+
+    this.getCurrentWord = function() {
+        return this.speech._currentWord;
     };
 
     //No official way to check when speech has finished, but method has worked from tests.
