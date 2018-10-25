@@ -58,22 +58,6 @@ var mappingEnglish = [{
     words: "my, i, myself, self, i've, Ive, me, mine"
 
 }, {
-    gesture: 'small',
-    words: 'tiny, less, little, itty, least, small, almost, few, smidge, tad, miniscule, micro, miniature, eensy, wee, short, nearly, dab, speck'
-
-}, {
-    gesture: 'before',
-    words: 'ago, already, before, begin, first, forget, former, from, history, past'
-
-}, {
-    gesture: 'after',
-    words: 'after, finally, finish, future, forward, become, goal, direction, late, later, last, then'
-
-}, {
-    gesture: 'impact',
-    words: 'against, apply, applying, applied, argue, firm, force, forced, forcing, forces, hard, hit, hits, hitting, impact, impacts, impacted, impacting, physical, threat, war, fight, fights, fighting, fought'
-
-}, {
     gesture: 'agreement',
     words: 'agree, agrees, agreed, join, joined, joins, joining, partner, partnered, partners, partnering, relationship, share, shared, sharing, shares, together, togetherness, linked, links, link, linking'
 
@@ -128,22 +112,6 @@ var mappingFrench = [{
 }, {
     gesture: 'self',
     words: "mon, moi, moi-même, j'ai, le mien"
-
-}, {
-    gesture: 'small',
-    words: 'minuscule, moins, petit, Itty, moins, petit, presque, peu, smidge, tad, minuscule, micro, miniature, eensy, wee, court, presque, dab, speck'
-
-}, {
-    gesture: 'before',
-    words: "il y a déjà, avant, commence, d'abord, oublie, ancien, de, l'histoire, le passé"
-
-}, {
-    gesture: 'after',
-    words: 'après, enfin, finir, avenir, avancer, devenir, objectif, direction, fin, plus tard, dernier, alors'
-
-}, {
-    gesture: 'impact',
-    words: 'contre, appliquer, appliquer, appliqué, argumenter, entreprise, force, forcé, forcer, forces, dur, frapper, coups, frapper, impact, impacts, impacté, impactant, physique, menace, guerre, combat, combats, combat, combattu'
 
 }, {
     gesture: 'agreement',
@@ -201,26 +169,6 @@ var mappingSpanish = [{
     words: "i, yo, sí, tengo, he, mi, mío "
 
 }, {
-    gesture: 'small',
-    words: 'pequena, menos, itty, por lo menos, pequeña, pocos, pizca, poco, minúsculo, micro, miniatura, eensy, wee, corta, casi, dab, mota'
-
-}, {
-    gesture: 'before',
-    words: 'Hace ya, antes, empezar, en primer lugar, olvidar, antiguo, de, historia, más allá'
-
-}, {
-    gesture: 'after',
-    words: 'después, por último, el acabado, el futuro, hacia adelante, se convierten, meta, dirección, tarde, pasada, luego'
-
-}, {
-    gesture: 'impact',
-    words: 'contra, aplicar, aplicando, aplicado, argumentar, firme, forzado, forzando, fuerzas, fuerza, golpe, golpes, impacto, impactos, impactados, afectando, físicas, amenazas, guerra, lucha, peleas, disputada'
-
-}, {
-    gesture: 'agreement',
-    words: 'de acuerdo, unir, uniones, unión, socio, socios, socios, asociación, relación, acción, compartida, el intercambio, las acciones, junto, unidad, unido, links, enlaces, que une'
-
-}, {
     gesture: 'face',
     words: 'ojo, pelo, cabeza, imagina, imaginado, imaginando, el conocimiento, la boca, remembed, recordando, recuerda, ver, pensar, pensamiento, piensa, pensado'
 
@@ -275,22 +223,6 @@ var mappingRussian = [{
     words: "боже, я, Ive, мне, мое"
 
 }, {
-    gesture: 'small',
-    words: 'крошечный, меньше, мало, малюсенЬКий,минимум, маленький, почти мало, smidge, тад, мизерный, микро-, миниатюрная, eensy, дите, короткий, почти, мазок, пятнышко'
-
-}, {
-    gesture: 'before',
-    words: 'назад, уже, раньше, начать сначала, забыть, бывший, из, история, прошлое'
-
-}, {
-    gesture: 'after',
-    words: 'после, наконец, отделка, будущее, вперед, стать, цель, направление, поздно, последний, затем'
-
-}, {
-    gesture: 'impact',
-    words: 'против, применение, применяются, утверждают, фирма, сила, принудительная, принуждая, силы, gestureкий, хит, хиты, удары, воздействие, воздействий, повлиявших, воздействуя, физические угрозы, войны, драки, борьба, дрались'
-
-}, {
     gesture: 'agreement',
     words: 'согласен, соглашается, согласился присоединиться, присоединились, присоединяется, присоединение, партнера, партнеров, отношения, общие, обмен, акция, вместе, единение, связаны между, ссылки'
 
@@ -337,18 +269,6 @@ var mappingJapanese = [{
     gesture: 'self',
     words: "自己, 私は, アイブ, 私, 鉱山をしました"
 }, {
-    gesture: 'small',
-    words: 'より少ない, 少し, itty, 少なくとも, 小さな, ほとんど, 少数, 非常に小さい, マイクロ, 小型, 短い, ほぼ, スペック'
-}, {
-    gesture: 'before',
-    words: ' すでに, 前に, 忘れて, 始め, かつて, 歴史, から, 過去'
-}, {
-    gesture: 'after',
-    words: '後で後半の後, 最終的には, 前方に仕上げ, 将来, なる, 目標, 方向, 最後の, そして'
-}, {
-    gesture: 'impact',
-    words: ', 適用に対する適用, 適用される, と主張, 事務所, 強制的に, 力を強制的に, ハード, ヒット, ヒットし, インパクト, 影響, 影響を受け, 衝撃, 物理的, 脅威, 戦争, 戦い, 戦闘戦いました'
-}, {
     gesture: 'agreement',
     words: '同意する, 同意し, 参加, 結合, 接合, パートナー, 関係, 共有, 一緒に, 一緒, リンクされ, リンク'
 }, {
@@ -392,18 +312,6 @@ var mappingKorean = [{
 }, {
     gesture: 'self',
     words: "내, 내가, 나 자신, 자기, 난, 필자 나, 내했습니다"
-}, {
-    gesture: 'small',
-    words: '이티, 적어도, 작은, 약간, 소문자, 마이크로, 소형, 꼬마, 짧은, 거의, 반점'
-}, {
-    gesture: 'before',
-    words: '전에, 이미 이전에, 먼저, 역사,에서, 전 잊지 과거의 시작'
-}, {
-    gesture: 'after',
-    words: '후, 마지막으로 마무리, 미래, 앞으로,가, 목표, 방향, 말, 나중에, 지난, 다음'
-}, {
-    gesture: 'impact',
-    words: '에 적용, 주장, 회사, 힘, 강요, 강제, 하드, 명중, 전투, 충격, 충격을 가하는 물리적, 위협, 전쟁, 싸움, 타격, 싸웠고'
 }, {
     gesture: 'agreement',
     words: '동의, 가입, 결합, 파트너, 파트너 관계, 관계, 공유, 함께, 공생, 링크'
