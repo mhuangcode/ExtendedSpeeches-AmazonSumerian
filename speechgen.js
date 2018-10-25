@@ -13,7 +13,7 @@
 //other languages.
 
 //english word map from create.js
-var mappingEnglish = [{
+const mappingEnglish = [{
     gesture: 'big',
     words: 'add, above, authority, big, cover, full, fly, grow, growth, high, huge, increase, major, majority, large, leader, lot, raise, rise, tall'
 
@@ -62,15 +62,11 @@ var mappingEnglish = [{
     words: 'agree, agrees, agreed, join, joined, joins, joining, partner, partnered, partners, partnering, relationship, share, shared, sharing, shares, together, togetherness, linked, links, link, linking'
 
 }, {
-    gesture: 'face',
-    words: 'eye, eyes, hair, head, imagine, imagines, imagined, imagining, knowledge, mouth, remember, remembed, remembering, remembers, see, seeing, think, thinking, thinks, thought'
-
-}, {
     gesture: 'negative',
     words: 'disgust, disgusted, gross, vile, ugly, eew, slimey, creepy, done, nasty, enough, without, never, nevermore, wont, wouldnt, shouldnt, dont, no, nope, none, never, nothing, nada'
 }];
 
-var mappingFrench = [{
+const mappingFrench = [{
     gesture: 'big',
     words: 'ajouter, ci-dessus, autorité, grand, couverture, plein, mouche, grandir, croissance, haute, énorme, augmentation, majeur, majorité, grand, chef de file, beaucoup, élever, monter, grand'
 }, {
@@ -118,15 +114,11 @@ var mappingFrench = [{
     words: "d'accord, de rejoindre, rejoint, rejoindre, partenaire, partenaire, partenaires, partenariat, relation, partager, partagé, partage, part, ensemble, togetherness, lié, liens, link, linking"
 
 }, {
-    gesture: 'face',
-    words: 'oeil, yeux, cheveux, tête, imaginer, imagine, imaginé, imaginant, savoir, bouche, se souvenir, se souvenir, se souvenir, se souvient, voir, voir, penser, pense, pensé'
-
-}, {
     gesture: 'negative',
     words: 'dégoût, dégoûté, grossier, vil, laid, eew, slimey, creepy, fait, méchant, assez, sans, jamais, nevermore, ne veut pas, ne pas, non, aucun, jamais, rien, nada'
 }];
 //////////////
-var mappingSpanish = [{
+const mappingSpanish = [{
     gesture: 'big',
     words: 'añadir, por encima, la autoridad, grande, cubierta, llena, volar, crecer, crecimiento, enorme, aumento, mayor, líder, mucho, subir, subida, alto '
 }, {
@@ -169,15 +161,11 @@ var mappingSpanish = [{
     words: "i, yo, sí, tengo, he, mi, mío "
 
 }, {
-    gesture: 'face',
-    words: 'ojo, pelo, cabeza, imagina, imaginado, imaginando, el conocimiento, la boca, remembed, recordando, recuerda, ver, pensar, pensamiento, piensa, pensado'
-
-}, {
     gesture: 'negative',
     words: 'asco, disgustado, bruto, vil, fea, eew, viscosa, espeluznante, hecho, desagradable, suficiente, sin, nunca, nunca más, costumbre, wouldnt, shouldnt, no haga, pues no, no, nada'
 }];
 
-var mappingRussian = [{
+const mappingRussian = [{
 
     gesture: 'big',
     words: 'добавить, выше, власть, большое, покрытие, полный, летать, рост, высокое, огромное, увеличение, майор, большинство, большой, лидер, много, поднять, расти, высокий'
@@ -227,15 +215,11 @@ var mappingRussian = [{
     words: 'согласен, соглашается, согласился присоединиться, присоединились, присоединяется, присоединение, партнера, партнеров, отношения, общие, обмен, акция, вместе, единение, связаны между, ссылки'
 
 }, {
-    gesture: 'face',
-    words: 'глаза, глаз, волосы, голова, представьте, воображает, представлял себе, воображая, знание, рот, помните, remembed, вспоминая, вспоминает, видят, видит, думать, думает, подумали'
-
-}, {
     gesture: 'negative',
     words: 'отвращение, валовые, мерзкий, некрасивый, ЭВП, жуткое, сделано, неприятный, достаточно, не, никогда больше, привычка, должны, не нет, Нету, ни, никогда, ничего, нада'
 }];
 /////////////////
-var mappingJapanese = [{
+const mappingJapanese = [{
     gesture: 'big',
     words: '上記の, 権限を追加し, フル大きい, カバー, 飛ぶ, 成長, 高, 巨大な,  主要な, 大多数, 大, リーダー, たくさん, 上げ, 上昇, 背の高いです'
 }, {
@@ -272,14 +256,11 @@ var mappingJapanese = [{
     gesture: 'agreement',
     words: '同意する, 同意し, 参加, 結合, 接合, パートナー, 関係, 共有, 一緒に, 一緒, リンクされ, リンク'
 }, {
-    gesture: 'face',
-    words: '目, 髪, 頭, 想像, 想像し, 知識, 口, 覚えて, 見る, 見て, 考える, 思考, 考えては, と思いました'
-}, {
     gesture: 'negative',
     words: '嫌悪感, 総, 下劣な, 醜い, EEW, slimey, 不気味な, 行って, 厄介な, 十分に, なし, 決して, ネヴァーモア, 文句を言わない, はずの, いけない, いや, どれも, 何も, 灘'
 }];
 ///////////////
-var mappingKorean = [{
+const mappingKorean = [{
     gesture: 'big',
     words: '비행, 전체, 위의, 성장, 높은, 거대한, 증가, 주요, 대부분의 큰 지도자, 많이, 인상, 상승, 키를 권한, 큰, 커버를 추가'
 }, {
@@ -316,16 +297,13 @@ var mappingKorean = [{
     gesture: 'agreement',
     words: '동의, 가입, 결합, 파트너, 파트너 관계, 관계, 공유, 함께, 공생, 링크'
 }, {
-    gesture: 'face',
-    words: '눈, 머리, 상상, 지식, 입, 는, 기억, 생각, 보고, 생각을 참조 기억한다 상상 상상'
-}, {
     gesture: 'negative',
     words: '혐오, 총, 비열한, 추한, EEW, 저런, 소 름, 수행, 불쾌한, 충분하지 않고, 결코, 그 뿐이었다, 습관, 야해, 그나마, 아니, 전혀, 아무것도, 아무것도 모르는'
 }];
 
-var genericGestures = ['generic_a', 'generic_b', 'generic_c'];
+const genericGestures = ['generic_a', 'generic_b', 'generic_c'];
 
-var languageMap = {
+const languageMap = {
     "en": mappingEnglish,
     "fr": mappingFrench,
     "es": mappingSpanish,
@@ -334,7 +312,7 @@ var languageMap = {
     "kr": mappingKorean
 };
 
-var languageNames = {
+const languageNames = {
     "en": 'English',
     "fr": 'French',
     "es": 'Spanish',
@@ -343,9 +321,9 @@ var languageNames = {
     "kr": 'Korean'
 }
 
-var asianLanguage = ["jp", "kr"];
+const asianLanguage = ["jp", "kr"];
 
-var femaleVoices = {
+const femaleVoices = {
     "en": "Salli",
     "fr": "Celine",
     "es": "Penelope",
@@ -354,7 +332,7 @@ var femaleVoices = {
     "kr": "Seoyeon"
 };
 
-var maleVoices = {
+const maleVoices = {
     "en": "Justin",
     "fr": "Mathieu",
     "es": "Miguel",
@@ -362,12 +340,12 @@ var maleVoices = {
     "jp": "Takumi"
 }
 
-var genders = {
+const genders = {
     'male': maleVoices,
     'female': femaleVoices
 };
 
-var voices = [
+const voices = [
     'Aditi',
     'Amy',
     'Astrid',
@@ -422,11 +400,11 @@ var voices = [
     'Vitoria'
 ];
 
-var whitespaceRegex = /\s+/g;
-var punctuationRegex = /[\.。,、\\\/\#\?？¡!!$%^&*;:{}\=\-\_`~()\[\]"']+/g;
-var sentenceEndRegex = /[.。!!?？]$/;
-var sentenceEndRegexAsian = /[.。!!?？]/g;
-var markRegex = /<[^>]*>/g;
+const whitespaceRegex = /\s+/g;
+const punctuationRegex = /[\.。,、\\\/\#\?？¡!!$%^&*;:{}\=\-\_`~()\[\]"']+/g;
+const sentenceEndRegex = /[.。!!?？]$/;
+const sentenceEndRegexAsian = /[.。!!?？]/g;
+const markRegex = /<[^>]*>/g;
 
 
 function spliceString(str, start, newSubString) {
@@ -434,32 +412,32 @@ function spliceString(str, start, newSubString) {
 }
 
 function replaceWordAt(str, word, index) {
-    var endIndex = index + word.length;
-    var replaceWith = "-".repeat(word.length);
+    let endIndex = index + word.length;
+    let replaceWith = "-".repeat(word.length);
     return str.slice(0, index) + str.slice(index, endIndex).replace(word, replaceWith) + str.slice(endIndex);
 }
 
 function replaceCharAt(str, character, index) {
-    var endIndex = index + 1;
+    let endIndex = index + 1;
     return str.slice(0, index) + character + str.slice(endIndex);
 };
 
 
 function removeElement(array, from, to) {
-    var rest = array.slice((to || from) + 1 || array.length);
+    let rest = array.slice((to || from) + 1 || array.length);
     array.length = from < 0 ? array.length + from : from;
     return array.push.apply(array, rest);
 }
 
 function getRandomGenericGesture() {
-    var i = Math.floor(Math.random() * genericGestures.length);
+    let i = Math.floor(Math.random() * genericGestures.length);
     return genericGestures[i];
 }
 
 
 //main function
 function genSpeechGestures(speech, language) {
-    var map = languageMap[language];
+    let map = languageMap[language];
 
     if (asianLanguage.indexOf(language) > -1) {
         speech = genSpeechGesturesAsian(speech, map);
@@ -471,9 +449,9 @@ function genSpeechGestures(speech, language) {
 }
 
 function getAsianSentences(speech) {
-    var sentenceStart = 0;
-    var sentenceEnd = speech.search(sentenceEndRegexAsian, 0);
-    var sentences = [];
+    let sentenceStart = 0;
+    let sentenceEnd = speech.search(sentenceEndRegexAsian, 0);
+    let sentences = [];
 
     while (sentenceEnd > -1) {
         sentences.push({
@@ -500,13 +478,13 @@ function getAsianSentences(speech) {
 //is a valid word
 function genSpeechGesturesAsian(speech, map) {
 
-    var gesturesToAdd = new Map();
-    var indicies = [];
+    let gesturesToAdd = new Map();
+    let indicies = [];
 
-    var speechText = speech.replace(markRegex, '');
-    var dirtyText = speechText;
+    let speechText = speech.replace(markRegex, '');
+    let dirtyText = speechText;
 
-    var sentences = getAsianSentences(speech);
+    let sentences = getAsianSentences(speech);
 
 
     for (let i = 0; i < map.length; i++) {
@@ -561,7 +539,7 @@ function genSpeechGesturesAsian(speech, map) {
 
         let gestureMark = '<mark name="gesture:' + gesture + '"/>';
 
-        speechText = speechText.splice(index, gestureMark);
+        speechText = spliceString(speechText, index, gestureMark);
     }
 
     speech = '<speak>' + speechText + '</speak>';
@@ -577,30 +555,30 @@ function genSpeechGesturesAsian(speech, map) {
 function genSpeechGesturesWestern(speech, map) {
 
     //remove any gesture & ssml marks from speech
-    var speechText = speech.replace(markRegex, '');
+    let speechText = speech.replace(markRegex, '');
 
-    var gesturedSentences = [];
-    var bIsMarkedSentence = false;
-    var currentSentence = [];
+    let gesturedSentences = [];
+    let bIsMarkedSentence = false;
+    let currentSentence = [];
 
     //make an array of white space in text, will be added back when reassembling text
-    var whitespace = speech.match(whitespaceRegex);
+    let whitespace = speech.match(whitespaceRegex);
 
     //Prevent whitespace array from being defined as null when only a single word is entered.
     if (whitespace == null) {
         whitespace = [];
     }
 
-    var whitespaceIndex = 0;
+    let whitespaceIndex = 0;
 
     let speechWords = speechText.split(whitespaceRegex);
 
-    var newGestures = getGestureForWords(speechWords, map);
+    let newGestures = getGestureForWords(speechWords, map);
 
     for (let i = 0; i < speechWords.length; i++) {
-        var word = speechWords[i];
+        let word = speechWords[i];
         if (newGestures[i] != "null") {
-            var gesture = newGestures[i];
+            let gesture = newGestures[i];
             currentSentence.push('<mark name="gesture:' + gesture + '"/>' + word);
             bIsMarkedSentence = true;
         } else {
@@ -637,8 +615,8 @@ function genSpeechGesturesWestern(speech, map) {
 //Faster searching for gestures
 function getGestureForWords(words, map) {
 
-    var cleanedWords = [];
-    var gesturesToAdd = [];
+    let cleanedWords = [];
+    let gesturesToAdd = [];
 
     for (let i = 0; i < words.length; i++) {
         let word = words[i];
@@ -652,13 +630,13 @@ function getGestureForWords(words, map) {
     }
 
     for (let i = 0; i < map.length; i++) {
-        var gesture = map[i].gesture;
-        var compareArray = map[i].words.split(',');
+        let gesture = map[i].gesture;
+        let compareArray = map[i].words.split(',');
 
         for (let ii = 0; ii < compareArray.length; ii++) {
-            var compare = compareArray[ii];
+            let compare = compareArray[ii];
             compare = compare.trim();
-            var index = cleanedWords.indexOf(compare);
+            let index = cleanedWords.indexOf(compare);
 
             if (index > -1) {
                 gesturesToAdd[index] = gesture;
@@ -678,8 +656,8 @@ function getGestureForWords(words, map) {
 function addSentence(speech, sentence, marked) {
 
     if (!marked) {
-        var gesture = getRandomGenericGesture();
-        var newSentence = '<mark name="gesture:' + gesture + '"/>';
+        let gesture = getRandomGenericGesture();
+        let newSentence = '<mark name="gesture:' + gesture + '"/>';
         speech.push(newSentence);
     }
 
@@ -699,8 +677,8 @@ sumerian.gesturedSpeech = function () {
 
         host.getComponent('SpeechComponent').addSpeech(this.speech);
 
-        var outputSpeech = speechText;
-        var gender = 'female';
+        let outputSpeech = speechText;
+        let gender = 'female';
 
         if (voice && voice.gender) {
             gender = voice.gender;
@@ -715,7 +693,7 @@ sumerian.gesturedSpeech = function () {
             return;
         }
 
-        var voiceArray = genders[gender];
+        let voiceArray = genders[gender];
 
         try {
             if (!voiceArray.hasOwnProperty(language)) {
@@ -726,7 +704,7 @@ sumerian.gesturedSpeech = function () {
             return;
         }
 
-        var pollyVoice = voiceArray[language];
+        let pollyVoice = voiceArray[language];
 
         if (voice && voice.pollyName) {
             pollyVoice = voice.pollyName;
