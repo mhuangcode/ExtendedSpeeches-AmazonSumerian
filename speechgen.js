@@ -62,10 +62,6 @@ var mappingEnglish = [{
     words: 'agree, agrees, agreed, join, joined, joins, joining, partner, partnered, partners, partnering, relationship, share, shared, sharing, shares, together, togetherness, linked, links, link, linking'
 
 }, {
-    gesture: 'face',
-    words: 'eye, eyes, hair, head, imagine, imagines, imagined, imagining, knowledge, mouth, remember, remembed, remembering, remembers, see, seeing, think, thinking, thinks, thought'
-
-}, {
     gesture: 'negative',
     words: 'disgust, disgusted, gross, vile, ugly, eew, slimey, creepy, done, nasty, enough, without, never, nevermore, wont, wouldnt, shouldnt, dont, no, nope, none, never, nothing, nada'
 }];
@@ -118,10 +114,6 @@ var mappingFrench = [{
     words: "d'accord, de rejoindre, rejoint, rejoindre, partenaire, partenaire, partenaires, partenariat, relation, partager, partagé, partage, part, ensemble, togetherness, lié, liens, link, linking"
 
 }, {
-    gesture: 'face',
-    words: 'oeil, yeux, cheveux, tête, imaginer, imagine, imaginé, imaginant, savoir, bouche, se souvenir, se souvenir, se souvenir, se souvient, voir, voir, penser, pense, pensé'
-
-}, {
     gesture: 'negative',
     words: 'dégoût, dégoûté, grossier, vil, laid, eew, slimey, creepy, fait, méchant, assez, sans, jamais, nevermore, ne veut pas, ne pas, non, aucun, jamais, rien, nada'
 }];
@@ -167,10 +159,6 @@ var mappingSpanish = [{
 }, {
     gesture: 'self',
     words: "i, yo, sí, tengo, he, mi, mío "
-
-}, {
-    gesture: 'face',
-    words: 'ojo, pelo, cabeza, imagina, imaginado, imaginando, el conocimiento, la boca, remembed, recordando, recuerda, ver, pensar, pensamiento, piensa, pensado'
 
 }, {
     gesture: 'negative',
@@ -227,10 +215,6 @@ var mappingRussian = [{
     words: 'согласен, соглашается, согласился присоединиться, присоединились, присоединяется, присоединение, партнера, партнеров, отношения, общие, обмен, акция, вместе, единение, связаны между, ссылки'
 
 }, {
-    gesture: 'face',
-    words: 'глаза, глаз, волосы, голова, представьте, воображает, представлял себе, воображая, знание, рот, помните, remembed, вспоминая, вспоминает, видят, видит, думать, думает, подумали'
-
-}, {
     gesture: 'negative',
     words: 'отвращение, валовые, мерзкий, некрасивый, ЭВП, жуткое, сделано, неприятный, достаточно, не, никогда больше, привычка, должны, не нет, Нету, ни, никогда, ничего, нада'
 }];
@@ -272,9 +256,6 @@ var mappingJapanese = [{
     gesture: 'agreement',
     words: '同意する, 同意し, 参加, 結合, 接合, パートナー, 関係, 共有, 一緒に, 一緒, リンクされ, リンク'
 }, {
-    gesture: 'face',
-    words: '目, 髪, 頭, 想像, 想像し, 知識, 口, 覚えて, 見る, 見て, 考える, 思考, 考えては, と思いました'
-}, {
     gesture: 'negative',
     words: '嫌悪感, 総, 下劣な, 醜い, EEW, slimey, 不気味な, 行って, 厄介な, 十分に, なし, 決して, ネヴァーモア, 文句を言わない, はずの, いけない, いや, どれも, 何も, 灘'
 }];
@@ -315,9 +296,6 @@ var mappingKorean = [{
 }, {
     gesture: 'agreement',
     words: '동의, 가입, 결합, 파트너, 파트너 관계, 관계, 공유, 함께, 공생, 링크'
-}, {
-    gesture: 'face',
-    words: '눈, 머리, 상상, 지식, 입, 는, 기억, 생각, 보고, 생각을 참조 기억한다 상상 상상'
 }, {
     gesture: 'negative',
     words: '혐오, 총, 비열한, 추한, EEW, 저런, 소 름, 수행, 불쾌한, 충분하지 않고, 결코, 그 뿐이었다, 습관, 야해, 그나마, 아니, 전혀, 아무것도, 아무것도 모르는'
@@ -561,7 +539,7 @@ function genSpeechGesturesAsian(speech, map) {
 
         let gestureMark = '<mark name="gesture:' + gesture + '"/>';
 
-        speechText = speechText.splice(index, gestureMark);
+        speechText = spliceString(speechText, index, gestureMark);
     }
 
     speech = '<speak>' + speechText + '</speak>';
