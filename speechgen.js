@@ -318,6 +318,48 @@ const mappingChinese = [{
     words: '跨越, 向前, 沿着, 远, 快, 跟随, 去, 离开, 移动, 运动, 通过, 整个, 朝向, 旅行, 转身'
 }, {
     gesture: 'one',
+    words:
+    '单, 一, 第一, 唯一, 独奏, 警告, 真实, 向上, 独自'
+}, {
+    gesture: 'aggressive',
+    words: '权力, 强大, 断言, 自信, 更强, 最强, 力量, flex, 党, 该死, 该死的, darn, shucks, doh, drat, 生气, 愤怒, 最痛苦, 好斗, 讨厌, 攻击, 进攻, 战斗'
+}, {
+    gesture: 'you',
+    words: '你, 你们, 你的'
+}, {
+    gesture: 'defense',
+    words: '防御, 恐惧, 击退, 最可怕, 畏缩, 懦夫, 可怕, 注定, 害怕, 恐怖可怕, 恐怖, 怪异, 幽灵般的最恐怖'
+}, {
+    gesture: 'wave',
+    words: '你好, 嗨, hiya, 欢迎, aloha, heya, 嘿, 再见, hola, adios, chao'
+}, {
+    gesture: 'self',
+    words: '我, 我自己, 我的'
+}, {
+    gesture: 'agreement',
+    words: '同意, 加入, 合作伙伴, 合作伙伴关系, 共享, 团结, 链接'
+}, {
+    gesture: 'negative',
+    words: '厌恶, 粗暴, 卑鄙, 丑陋, eew, slimey, 令人毛骨悚然, 完成, 足够, 没有, 不会 不应该, 不, 从不, nada'
+}];
+
+const mappingChinese = [{
+    gesture: 'big',
+    words: '添加, 以上, 权威, 大, 封面, 充分, 飞, 成长, 增长, 高, 巨大, 增加, 主要, 多数, 领导者, 很多, 提高, 上升'
+}, {
+    gesture: 'heart',
+    words: '接受, 承认, 相信, 关心, 感觉, 朋友, 感恩, 快乐, 心, 人类, 痛苦, 保存, 安全, 善良, 爱'
+}, {
+    gesture: 'in',
+    words: '包括, 里面, 进入, 现在, 靠近, 最近, 在其中, 在内'
+}, {
+    gesture: 'many',
+    words: '所有, 永远, 任何人, 其中, 区域, 任何, 周围, 美丽, 整体, 环境, 每个人, 一切, 观众, 总计, 群体, 百万, 数百万, 其他, 十亿, 数十亿, 百, 数百, 许多, 千, 世界, 外面, 揭示'
+}, {
+    gesture: 'movement',
+    words: '跨越, 向前, 沿着, 远, 快, 跟随, 去, 离开, 移动, 运动, 通过, 整个, 朝向, 旅行, 转身'
+}, {
+    gesture: 'one',
     words: '单, 一, 第一, 唯一, 独奏, 警告, 真实, 向上, 独自'
 }, {
     gesture: 'aggressive',
@@ -869,7 +911,7 @@ sumerian.GesturedSpeech = function (config = {
     this.onSsmlEvent = (message) => {
         if (message === 'speechend') {
             this.isSpeechFinished = true;
-            console.log(this.isSpeechPlaying);
+
             if (this.endSpeechCallback) {
                 this.endSpeechCallback(this);
             }
