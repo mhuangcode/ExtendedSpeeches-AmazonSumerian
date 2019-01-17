@@ -2,11 +2,11 @@
 
 //Project to extend speeches in Amazon Sumerian
 
-//Martin Huang 
+//Martin Huang - mhuangcode@gmail.com
 //https://github.com/MHuangCode/ExtendedSpeeches-AmazonSumerian
 
 //Speeches can be marked with gesture marks in Sumerian to trigger gestures/emotes for host.
-//The editor has a function for marks to be auto-generated with a click of a button! 
+//The editor has a function for marks to be auto-generated with a click of a button!
 //But there is no function that does this during play/real-time.
 
 //This project is an attempt to address this and extend upon the same function by including several
@@ -298,7 +298,49 @@ const mappingKorean = [{
     words: '동의, 가입, 결합, 파트너, 파트너 관계, 관계, 공유, 함께, 공생, 링크'
 }, {
     gesture: 'negative',
-    words: '혐오, 총, 비열한, 추한, EEW, 저런, 소 름, 수행, 불쾌한, 충분하지 않고, 결코, 그 뿐이었다, 습관, 야해, 그나마, 아니, 전혀, 아무것도, 아무것도 모르는'
+    words: '혐오, 총, 비열한, 추한, eew, 저런, 소 름, 수행, 불쾌한, 충분하지 않고, 결코, 그 뿐이었다, 습관, 야해, 그나마, 아니, 전혀, 아무것도, 아무것도 모르는'
+}];
+
+const mappingChinese = [{
+    gesture: 'big',
+    words: '添加, 以上, 权威, 大, 封面, 充分, 飞, 成长, 增长, 高, 巨大, 增加, 主要, 多数, 领导者, 很多, 提高, 上升'
+}, {
+    gesture: 'heart',
+    words: '接受, 承认, 相信, 关心, 感觉, 朋友, 感恩, 快乐, 心, 人类, 痛苦, 保存, 安全, 善良, 爱'
+}, {
+    gesture: 'in',
+    words: '包括, 里面, 进入, 现在, 靠近, 最近, 在其中, 在内'
+}, {
+    gesture: 'many',
+    words: '所有, 永远, 任何人, 其中, 区域, 任何, 周围, 美丽, 整体, 环境, 每个人, 一切, 观众, 总计, 群体, 百万, 数百万, 其他, 十亿, 数十亿, 百, 数百, 许多, 千, 世界, 外面, 揭示'
+}, {
+    gesture: 'movement',
+    words: '跨越, 向前, 沿着, 远, 快, 跟随, 去, 离开, 移动, 运动, 通过, 整个, 朝向, 旅行, 转身'
+}, {
+    gesture: 'one',
+    words:
+    '单, 一, 第一, 唯一, 独奏, 警告, 真实, 向上, 独自'
+}, {
+    gesture: 'aggressive',
+    words: '权力, 强大, 断言, 自信, 更强, 最强, 力量, flex, 党, 该死, 该死的, darn, shucks, doh, drat, 生气, 愤怒, 最痛苦, 好斗, 讨厌, 攻击, 进攻, 战斗'
+}, {
+    gesture: 'you',
+    words: '你, 你们, 你的'
+}, {
+    gesture: 'defense',
+    words: '防御, 恐惧, 击退, 最可怕, 畏缩, 懦夫, 可怕, 注定, 害怕, 恐怖可怕, 恐怖, 怪异, 幽灵般的最恐怖'
+}, {
+    gesture: 'wave',
+    words: '你好, 嗨, hiya, 欢迎, aloha, heya, 嘿, 再见, hola, adios, chao'
+}, {
+    gesture: 'self',
+    words: '我, 我自己, 我的'
+}, {
+    gesture: 'agreement',
+    words: '同意, 加入, 合作伙伴, 合作伙伴关系, 共享, 团结, 链接'
+}, {
+    gesture: 'negative',
+    words: '厌恶, 粗暴, 卑鄙, 丑陋, eew, slimey, 令人毛骨悚然, 完成, 足够, 没有, 不会 不应该, 不, 从不, nada'
 }];
 
 const genericGestures = ['generic_a', 'generic_b', 'generic_c'];
@@ -309,7 +351,8 @@ const languageMap = {
     "es": mappingSpanish,
     "ru": mappingRussian,
     "jp": mappingJapanese,
-    "kr": mappingKorean
+    "kr": mappingKorean,
+    "zh": mappingChinese
 };
 
 const languageNames = {
@@ -318,10 +361,11 @@ const languageNames = {
     "es": 'Spanish',
     "ru": 'Russian',
     "jp": 'Japanese',
-    "kr": 'Korean'
-}
+    "kr": 'Korean',
+    "zh": 'Chinese'
+};
 
-const asianLanguage = ["jp", "kr"];
+const asianLanguage = ["jp", "kr", "zh"];
 
 const femaleVoices = {
     "en": "Salli",
@@ -329,7 +373,8 @@ const femaleVoices = {
     "es": "Penelope",
     "ru": "Tatyana",
     "jp": "Mizuki",
-    "kr": "Seoyeon"
+    "kr": "Seoyeon",
+    'zh': 'Zhiyu'
 };
 
 const maleVoices = {
@@ -397,47 +442,37 @@ const voices = [
     'Takumi',
     'Tatyana',
     'Vicki',
-    'Vitoria'
+    'Vitoria',
+    'Zhiyu'
 ];
 
 const whitespaceRegex = /\s+/g;
-const punctuationRegex = /[\.。,、\\\/\#\?？¡!!$%^&*;:{}\=\-\_`~()\[\]"']+/g;
+const punctuationRegex = /[\.。，,、\\\/\#\?？¡!!$%^&*;:{}\=\-\_`~()\[\]"']+/g;
 const sentenceEndRegex = /[.。!!?？]$/;
 const sentenceEndRegexAsian = /[.。!!?？]/g;
 const markRegex = /<[^>]*>/g;
 
+const spliceString = (str, start, newSubString) => str.slice(0, start) + newSubString + str.slice(start);
 
-function spliceString(str, start, newSubString) {
-    return str.slice(0, start) + newSubString + str.slice(start);
-}
-
-function replaceWordAt(str, word, index) {
-    let endIndex = index + word.length;
-    let replaceWith = "-".repeat(word.length);
+const replaceWordAt = (str, word, index) => {
+    const endIndex = index + word.length;
+    const replaceWith = "-".repeat(word.length);
     return str.slice(0, index) + str.slice(index, endIndex).replace(word, replaceWith) + str.slice(endIndex);
-}
-
-function replaceCharAt(str, character, index) {
-    let endIndex = index + 1;
-    return str.slice(0, index) + character + str.slice(endIndex);
 };
 
+const replaceCharAt = (str, character, index) => str.slice(0, index) + character + str.slice(index + 1);
 
-function removeElement(array, from, to) {
-    let rest = array.slice((to || from) + 1 || array.length);
+const removeElement = (array, from, to) => {
+    const rest = array.slice((to || from) + 1 || array.length);
     array.length = from < 0 ? array.length + from : from;
     return array.push.apply(array, rest);
-}
+};
 
-function getRandomGenericGesture() {
-    let i = Math.floor(Math.random() * genericGestures.length);
-    return genericGestures[i];
-}
-
+const getRandomGenericGesture = () => genericGestures[Math.floor(Math.random() * genericGestures.length)];
 
 //main function
-function genSpeechGestures(speech, language) {
-    let map = languageMap[language];
+const genSpeechGestures = (speech, language) => {
+    const map = languageMap[language];
 
     if (asianLanguage.indexOf(language) > -1) {
         speech = genSpeechGesturesAsian(speech, map);
@@ -446,12 +481,12 @@ function genSpeechGestures(speech, language) {
     }
 
     return speech;
-}
+};
 
-function getAsianSentences(speech) {
+const getAsianSentences = (speech) => {
     let sentenceStart = 0;
     let sentenceEnd = speech.search(sentenceEndRegexAsian, 0);
-    let sentences = [];
+    const sentences = [];
 
     while (sentenceEnd > -1) {
         sentences.push({
@@ -471,15 +506,15 @@ function getAsianSentences(speech) {
     }
 
     return sentences;
-}
+};
 
 //since asian words do not have whitespace in between each other
 //we will use index of to get a good guess of where and if there
 //is a valid word
-function genSpeechGesturesAsian(speech, map) {
+const genSpeechGesturesAsian = (speech, map) => {
 
-    let gesturesToAdd = new Map();
-    let indicies = [];
+    const gesturesToAdd = new Map();
+    const indicies = [];
 
     let speechText = speech.replace(markRegex, '');
     let dirtyText = speechText;
@@ -488,11 +523,11 @@ function genSpeechGesturesAsian(speech, map) {
 
 
     for (let i = 0; i < map.length; i++) {
-        let gesture = map[i].gesture;
-        let words = map[i].words.split(',');
+        const gesture = map[i].gesture;
+        const words = map[i].words.split(', ');
 
         for (let ii = 0; ii < words.length; ii++) {
-            let trimmedWord = words[ii].trim();
+            const trimmedWord = words[ii].trim();
             let index = dirtyText.indexOf(trimmedWord);
 
             //need to keep check that there are not more than 1 gesture per word
@@ -519,8 +554,8 @@ function genSpeechGesturesAsian(speech, map) {
 
     //Check if each sentence has a gesture, if not find a random one
     for (let i = 0; i < sentences.length; i++) {
-        let index = sentences[i].start;
-        let randomGesture = getRandomGenericGesture();
+        const index = sentences[i].start;
+        const randomGesture = getRandomGenericGesture();
         indicies.push(index);
         gesturesToAdd.set(index, randomGesture);
 
@@ -534,52 +569,47 @@ function genSpeechGesturesAsian(speech, map) {
     });
 
     for (let i = 0; i < indicies.length; i++) {
-        let index = indicies[i];
-        let gesture = gesturesToAdd.get(index);
-
-        let gestureMark = '<mark name="gesture:' + gesture + '"/>';
+        const index = indicies[i];
+        const gestureMark = '<mark name="gesture:' + gesturesToAdd.get(index) + '"/>';
 
         speechText = spliceString(speechText, index, gestureMark);
     }
 
-    speech = '<speak>' + speechText + '</speak>';
-
-    return speech;
-}
+    return '<speak>' + '<mark name="speechstart"/>' + speechText + '<mark name="speechend"/>' + '</speak>';
+};
 
 //Since western languages have whitespaces we can use that as a marker
 //for each word.
 //Similar logic from create.js in sumerian when clicking on auto-generate
 //speech gestures for speeches in the editior. Only difference is the searching method.
 //Credits to the AWS Sumerian team.
-function genSpeechGesturesWestern(speech, map) {
+const genSpeechGesturesWestern = (speech, map) => {
 
     //remove any gesture & ssml marks from speech
-    let speechText = speech.replace(markRegex, '');
+    const speechText = speech.replace(markRegex, '');
 
-    let gesturedSentences = [];
+    const gesturedSentences = [];
     let bIsMarkedSentence = false;
-    let currentSentence = [];
+    const currentSentence = [];
 
     //make an array of white space in text, will be added back when reassembling text
-    let whitespace = speech.match(whitespaceRegex);
+    const whitespace = speech.match(whitespaceRegex);
 
     //Prevent whitespace array from being defined as null when only a single word is entered.
     if (whitespace == null) {
-        whitespace = [];
+        whitespace.length = 0;
     }
 
     let whitespaceIndex = 0;
 
-    let speechWords = speechText.split(whitespaceRegex);
+    const speechWords = speechText.split(whitespaceRegex);
 
-    let newGestures = getGestureForWords(speechWords, map);
+    const newGestures = getGestureForWords(speechWords, map);
 
     for (let i = 0; i < speechWords.length; i++) {
-        let word = speechWords[i];
+        const word = speechWords[i];
         if (newGestures[i] != "null") {
-            let gesture = newGestures[i];
-            currentSentence.push('<mark name="gesture:' + gesture + '"/>' + word);
+            currentSentence.push('<mark name="gesture:' + newGestures[i] + '"/>' + word);
             bIsMarkedSentence = true;
         } else {
             currentSentence.push(word);
@@ -590,7 +620,7 @@ function genSpeechGesturesWestern(speech, map) {
         }
 
         if (sentenceEndRegex.test(word)) {
-            let fullSentence = addSentence(gesturedSentences, currentSentence, bIsMarkedSentence);
+            const fullSentence = addSentence(gesturedSentences, currentSentence, bIsMarkedSentence);
             gesturedSentences.push(fullSentence);
 
             currentSentence.length = 0;
@@ -602,27 +632,26 @@ function genSpeechGesturesWestern(speech, map) {
     if (currentSentence.length > 0) {
 
         //will check if sentence has any marks, if not add random generic one
-        let fullSentence = addSentence(gesturedSentences, currentSentence, bIsMarkedSentence);
+        const fullSentence = addSentence(gesturedSentences, currentSentence, bIsMarkedSentence);
         gesturedSentences.push(fullSentence);
     }
 
     //add speak marks and join all sentences
-    speech = '<speak>' + gesturedSentences.join('') + '</speak>';
-    return speech;
-}
+    return '<speak>' + '<mark name="speechstart"/>' + gesturedSentences.join('') + '<mark name="speechend"/>' + '</speak>';
+};
 
 
 //Faster searching for gestures
-function getGestureForWords(words, map) {
+const getGestureForWords = (words, map) => {
 
-    let cleanedWords = [];
-    let gesturesToAdd = [];
+    const cleanedWords = [];
+    const gesturesToAdd = [];
 
     for (let i = 0; i < words.length; i++) {
-        let word = words[i];
-        let unPunctuationWord = word.replace(punctuationRegex, '');
-        let lowercaseWord = unPunctuationWord.toLowerCase();
-        let trimmedWord = lowercaseWord.trim();
+        const word = words[i];
+        const unPunctuationWord = word.replace(punctuationRegex, '');
+        const lowercaseWord = unPunctuationWord.toLowerCase();
+        const trimmedWord = lowercaseWord.trim();
 
         cleanedWords.push(trimmedWord);
 
@@ -630,13 +659,13 @@ function getGestureForWords(words, map) {
     }
 
     for (let i = 0; i < map.length; i++) {
-        let gesture = map[i].gesture;
-        let compareArray = map[i].words.split(',');
+        const gesture = map[i].gesture;
+        const compareArray = map[i].words.split(', ');
 
         for (let ii = 0; ii < compareArray.length; ii++) {
             let compare = compareArray[ii];
             compare = compare.trim();
-            let index = cleanedWords.indexOf(compare);
+            const index = cleanedWords.indexOf(compare);
 
             if (index > -1) {
                 gesturesToAdd[index] = gesture;
@@ -646,190 +675,286 @@ function getGestureForWords(words, map) {
     }
 
     return gesturesToAdd;
-}
-
+};
 
 //Credit to the AWS Sumerian team
 //returns joined sentence of gestured marks, words, and whitespaces
 //if a speech is not marked then add a generic mark so host does not
 //stand there like a robot the whole time.
-function addSentence(speech, sentence, marked) {
+const addSentence = (speech, sentence, marked) => {
 
     if (!marked) {
-        let gesture = getRandomGenericGesture();
-        let newSentence = '<mark name="gesture:' + gesture + '"/>';
-        speech.push(newSentence);
+        const gesture = getRandomGenericGesture();
+        speech.push('<mark name="gesture:' + gesture + '"/>');
     }
 
     speech.push(sentence.join(''));
 
     return speech;
-}
+};
 
-//custom object to create gestured speeches
-sumerian.gesturedSpeech = function () {
+const getValidGender = (gender = 'female') => {
+    if (genders.hasOwnProperty(gender)) {
+        return gender;
+    } else {
+        console.error('invalid voice gender: ' + gender);
+    }
+};
+
+const getValidLanguage = (gender, language) => {
+
+    const voiceByGender = genders[gender];
+    if (voiceByGender && voiceByGender.hasOwnProperty(language)) {
+        return language;
+    } else {
+        console.error('No valid voice for this language and gender combination: ' + language + ", " + this.gender);
+    }
+};
+
+
+const getValidVoice = (gender, language, voice) => {
+
+    if (voice) {
+        try {
+            if (voices.hasOwnProperty(voice)) {
+                return voice;
+            } else {
+                throw Error(voice + ' is not a valid voice.');
+            }
+        } catch (e) {
+            console.error(e);
+            return;
+        }
+    }
+
+    const genderVoices = genders[gender];
+    return genderVoices[language];
+};
+
+
+const getValidText = (text, language, autoGesture) => {
+    if (autoGesture) {
+        return genSpeechGestures(text, language);
+    } else {
+        return text;
+    }
+};
+
+const updateSpeech = (speech, host, speechBody, voice) => {
+    speech.updateConfig({
+        entity: host,
+        body: speechBody,
+        voice: voice
+    });
+};
+
+const speeches = [];
+
+sumerian.GesturedSpeech = function (config = {
+    speechBody: '',
+    language: 'en',
+    host: null,
+    autoGesture: true,
+    gender: 'female',
+    voiceName: '',
+    endSpeechCallback: null,
+    startSpeechCallback: null,
+    ssmlCallback: null,
+    sentenceCallback: null,
+    onStopCallback: null,
+    onPlayCallBack: null,
+    wordCallback: null
+}) {
     this.speech = new sumerian.Speech();
-    this.speechBody = "";
-    this.gesturedBody = "";
-    this.configured = false;
-    this.wordIndex = -2;
-    this.configureSpeech = function (speechText, language, host, autoGesture, voice) {
+    this.host = config.host;
 
-        host.getComponent('SpeechComponent').addSpeech(this.speech);
+    this.host.getComponent('SpeechComponent').addSpeech(this.speech);
 
-        let outputSpeech = speechText;
-        let gender = 'female';
+    this.autoGesture = config.autoGesture;
+    this.gender = config.gender ? getValidGender(config.gender) : getValidGender();
+    this.language = getValidLanguage(this.gender, config.language);
+    this.voice = config.voiceName ? getValidVoice(this.gender, this.language, config.voiceName) : getValidVoice(this.gender, this.language);
+    this.speechBody = getValidText(config.speechBody, this.language, this.autoGesture);
 
-        if (voice && voice.gender) {
-            gender = voice.gender;
+    this.endSpeechCallback = config.endSpeechCallback;
+    this.startSpeechCallback = config.startSpeechCallback;
+    this.ssmlCallback = config.ssmlCallback;
+    this.sentenceCallback = config.sentenceCallback;
+    this.onStopCallback = config.onStopCallBack;
+    this.onPlayCallBack = config.onPlayCallBack;
+    this.wordCallback = config.wordCallback;
+
+    this.isSpeechPlaying = false;
+    this.isSpeechFinished = true;
+
+    this.currentSentence = '';
+    this.currentWord = '';
+
+    // configure speech, part of the constructor
+    updateSpeech(this.speech, this.host, this.speechBody, this.voice);
+    speeches.push(this);
+    this.configureListeners();
+
+    // use during setup function in other scripts to make sure speech is ready
+    sumerian.SystemBus.emit(this.host.id + '.GesturedSpeechReady');
+
+    this.setCallback = (type, callback) => {
+        switch (type.toLowerCase()) {
+            case 'endspeech':
+                this.endSpeechCallback = callback;
+                break;
+            case 'startspeech':
+                this.startSpeechCallback = callback;
+                break;
+            case 'ssml':
+                this.ssmlCallback = callback;
+                break;
+            case 'sentence':
+                this.sentenceCallback = callback;
+                break;
+            case 'stop':
+                this.onStopCallBack = callback;
+                break;
+            case 'start':
+                this.onStartCallBack = callback;
+                break;
+            case 'word':
+                this.wordCallback = callback;
+                break;
+            default:
+                console.error('invalid event type: ', type);
         }
+    }
 
-        try {
-            if (!genders.hasOwnProperty(gender)) {
-                throw Error('Invalid voice gender: ' + gender);
-            }
-        } catch (e) {
-            console.error(e);
+    this.setText = (text) => {
+
+        if (typeof text != 'string' || text.length == 0) {
+            console.error('invalid speech body', text);
             return;
         }
 
-        let voiceArray = genders[gender];
-
-        try {
-            if (!voiceArray.hasOwnProperty(language)) {
-                throw Error('No valid voice for this language and gender combination: ' + languageNames[language] + ", " + gender);
-            }
-        } catch (e) {
-            console.error(e);
-            return;
-        }
-
-        let pollyVoice = voiceArray[language];
-
-        if (voice && voice.pollyName) {
-            pollyVoice = voice.pollyName;
-        }
-
-        try {
-            if (!languageMap.hasOwnProperty(language)) {
-                throw Error('Invalid language: ' + language);
-            }
-
-            if (voices.indexOf(pollyVoice) == -1) {
-                throw Error('Invalid voice ID: ' + pollyVoice);
-            }
-
-            if (outputSpeech.length < 1) {
-                throw Error('Length of speech text body < 1');
-            }
-
-        } catch (e) {
-            console.error(e);
-            return;
-        }
-
-        if (autoGesture) {
-            outputSpeech = genSpeechGestures(speechText, language);
-        }
-
-        this.speech.updateConfig({
-            entity: host,
-            body: outputSpeech,
-            voice: pollyVoice
-        });
-
-        this.speechBody = speechText;
-        this.gesturedBody = outputSpeech;
-        this.configured = true;
-        this.wordIndex = -2;
+        this.speechBody = getValidText(text, this.language, this.autoGesture);
+        updateSpeech(this.speech, this.host, this.speechBody, this.voice);
     };
 
-    this.play = function () {
-        try {
-            if (!this.configured) {
-                throw Error('Unconfigured speech, please configure before play attempt');
-            }
+    this.setVoice = (voice) => {
+        this.voice = getValidVoice(voice);
+    };
 
+    this.updateConfig = () => {
+        updateSpeech(this.speech, this.host, this.speechBody, this.voice);
+    };
+
+    this.setLanguage = (language) => {
+        this.language = getValidLanguage(this.gender, language);
+        this.voice = getValidVoice(this.gender, this.language);
+        this.updateConfig();
+    };
+
+    this.play = (speech = null) => {
+
+        if (speech) {
+            this.setText(speech);
+        }
+
+        if (this.isSpeechPlaying) {
+            setTimeout(() => {
+                this.play();
+            }, 500);
+
+        } else {
+            sumerian.SystemBus.emit(this.host.id + '.beginSpeechEvent');
             this.speech.play();
-        } catch (e) {
-            console.error(e);
-            return;
         }
     };
 
-    this.stop = function () {
-        try {
-            if (!this.configured) {
-                throw Error('Unconfigured speech, please configure before stop attempt');
+    this.stop = () => {
+        this.speech.stop();
+    };
+
+    this.pause = () => {
+        this.speech.pause();
+    };
+
+    this.onSsmlEvent = (message) => {
+        if (message === 'speechend') {
+            this.isSpeechFinished = true;
+
+            if (this.endSpeechCallback) {
+                this.endSpeechCallback(this);
             }
+        } else if (message === 'speechstart') {
+            this.isSpeechFinished = false;
 
-            this.speech.stop(true);
-            this.wordIndex = -1;
-        } catch (e) {
-            console.error(e);
-            return;
-        }
-    };
-
-    this.pause = function () {
-        try {
-            if (!this.configured) {
-                throw Error('Unconfigured speech, please configure before pause attempt');
+            if (this.startSpeechCallback) {
+                this.startSpeechCallback(this);
             }
+        } else if (this.ssmlCallback) {
+            this.ssmlCallback(this, message);
+        }
 
-            this.speech.stop(false);
-        } catch (e) {
-            console.error(e);
-            return;
+    };
+
+    this.onSentenceEvent = (sentence) => {
+        this.currentSentence = sentence;
+        if (this.sentenceCallback) {
+            this.sentenceCallback(this, sentence);
         }
     };
 
-    this.restart = function() {
-        try {
-            if (!this.configured) {
-                throw Error('Unconfigured speech, please configure before pause attempt');
-            }
-
-            this.stop();
-            this.play();
-        } catch(e) {
-            console.error(e);
-            return;
+    this.onStopEvent = () => {
+        this.isSpeechPlaying = false;
+        sumerian.SystemBus.emit(this.host.id + '.endSpeechEvent');
+        if (this.onStopCallBack) {
+            this.onStopCallBack(this);
         }
     };
 
-    this.getSentences = function(){
-        return this.speech._speechMarks.sentence;
-    };
-
-    this.getWordIndex = function() {
-        return this.speech._currentWordMarkIndex;
-    };
-
-    this.getWords = function() {
-        return this.speech._speechMarks.word;
-    };
-
-    this.getCurrentWord = function() {
-        return this.speech._currentWord;
-    };
-
-    //No official way to check when speech has finished, but method has worked from tests.
-    this.isSpeechFinished = function () {
-        if (this.speech._currentWord != "") {
-            if (this.wordIndex < this.speech._currentWordMarkIndex) {
-                this.wordIndex = this.speech._currentWordMarkIndex;
-            }
-            return false;
-        } else if (this.wordIndex > this.speech._currentWordMarkIndex && this.speech._currentWordMarkIndex == 0) {
-            this.wordIndex = -1;
-            return true;
+    this.onPlayEvent = () => {
+        this.isSpeechPlaying = true;
+        if (this.onPlayCallBack) {
+            this.onPlayCallBack(this);
         }
+    };
 
-        if (this.wordIndex == -1) {
-            return true;
+    this.onWordEvent = (word) => {
+        this.currentWord = word;
+        if (this.wordCallback) {
+            this.wordCallback(this, word);
         }
+    };
 
-        return false;
+    this.configureListeners = () => {
+        sumerian.SystemBus.addListener(`${this.host.id + '.ssmlEvent'}`, this.onSsmlEvent);
+        sumerian.SystemBus.addListener(`${this.host.id + '.sentenceEvent'}`, this.onSentenceEvent);
+        sumerian.SystemBus.addListener(`${this.host.id + '.startSpeechEvent'}`, this.onPlayEvent);
+        sumerian.SystemBus.addListener(`${this.host.id + '.stopSpeechEvent'}`, this.onStopEvent);
+        sumerian.SystemBus.addListener(`${this.host.id + '.wordEvent'}`, this.onWordEvent);
+
+        sumerian.SystemBus.addListener(`${this.host.id + '.playGesturedSpeech'}`, this.play());
+        sumerian.SystemBus.addListener(`${this.host.id + '.stopGesturedSpeech'}`, this.stop());
+        sumerian.SystemBus.addListener(`${this.host.id + '.pauseGesturedSpeech'}`, this.pause());
+    };
+
+    this.cleanup = () => {
+        sumerian.SystemBus.removeListener(`${this.host.id + '.ssmlEvent'}`, this.onSsmlEvent);
+        sumerian.SystemBus.removeListener(`${this.host.id + '.sentenceEvent'}`, this.onSentenceEvent);
+        sumerian.SystemBus.removeListener(`${this.host.id + '.startSpeechEvent'}`, this.onPlayEvent);
+        sumerian.SystemBus.removeListener(`${this.host.id + '.stopSpeechEvent'}`, this.onStopEvent);
+        sumerian.SystemBus.removeListener(`${this.host.id + '.wordEvent'}`, this.onWordEvent);
+
+        sumerian.SystemBus.removeListener(`${this.host.id + '.playGesturedSpeech'}`, this.play());
+        sumerian.SystemBus.removeListener(`${this.host.id + '.stopGesturedSpeech'}`, this.stop());
+        sumerian.SystemBus.removeListener(`${this.host.id + '.pauseGesturedSpeech'}`, this.pause());
+
+        this.host.getComponent('SpeechComponent').removeSpeech(this.speech);
     };
 };
+
+function cleanup(args, ctx) {
+    speeches.forEach(value => {
+        value.cleanup();
+    });
+
+    speeches.length = 0;
+}
