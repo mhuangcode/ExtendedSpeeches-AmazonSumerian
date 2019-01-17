@@ -54,7 +54,7 @@ To further extend speeches, there is a custom function to keep track of if a spe
 
 >  - Automatic Amazon Polly voice selection based on language.
 
->  - Custom events for speeches.
+>  - Function to check if speech has finished playing.
 
 >  #### Prerequisites:
 
@@ -95,30 +95,19 @@ To create a gestured speech construct a new object,
 #### Default Polly Voices:
 
 | - | Language | Voice Name | Gender |
-
 |--|--|--|--|
-
 |en| English| Salli | female |
-
 |en| English| Justin | male |
-
 |fr| French| Celine | female |
-
 |fr| French| Mathieu | male |
-
 |es| Spanish| Penelope | female |
-
 |es| Spanish| Miguel | male |
-
 |ru| Russian| Tatyana | female |
-
 |ru| Russian| Maxim | male |
-
 |jp| Japanese| Mizuki | female |
-
 |jp| Japanese| Takumi | male |
-
 |kr| Korean| Seoyeon | female |
+|zh| Chinese | Zhiyu | female |
 
 
 
