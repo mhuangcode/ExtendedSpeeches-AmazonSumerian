@@ -792,38 +792,38 @@ const updateSpeech = (speech, host, speechBody, voice) => {
 const speeches = [];
 
 sumerian.GesturedSpeech = function (config = {
-    speechBody: '',
-    language: 'en',
-    host: null,
-    autoGesture: true,
-    gender: 'female',
-    voiceName: '',
-    endSpeechCallback: null,
-    startSpeechCallback: null,
-    ssmlCallback: null,
-    sentenceCallback: null,
-    onStopCallback: null,
-    onPlayCallBack: null,
-    wordCallback: null
+    speechBody: '', //optional
+    language: 'en', //optional if voice is selected, default to english
+    host: null, //manditory, your entity/host must have a speech component
+    autoGesture: true, //optional
+    gender: 'female', //optional if voice is selected, defaults to female
+    voiceName: '', //optional, will override language and gender if given
+    endSpeechCallback: null, // optional
+    startSpeechCallback: null,// optional
+    ssmlCallback: null,// optional
+    sentenceCallback: null,// optional
+    onStopCallback: null,// optional
+    onPlayCallBack: null,// optional
+    wordCallback: null// optional
 }) {
     this.speech = new sumerian.Speech();
     this.host = config.host;
 
     this.host.getComponent('SpeechComponent').addSpeech(this.speech);
 
-    this.autoGesture = config.autoGesture;
+    this.autoGesture = config.autoGesture || true;
     this.gender = config.gender ? getValidGender(config.gender) : getValidGender();
     this.language = getValidLanguage(this.gender, config.language);
     this.voice = config.voiceName ? getValidVoice(this.gender, this.language, config.voiceName) : getValidVoice(this.gender, this.language);
     this.speechBody = getValidText(config.speechBody, this.language, this.autoGesture);
 
-    this.endSpeechCallback = config.endSpeechCallback;
-    this.startSpeechCallback = config.startSpeechCallback;
-    this.ssmlCallback = config.ssmlCallback;
-    this.sentenceCallback = config.sentenceCallback;
-    this.onStopCallback = config.onStopCallBack;
-    this.onPlayCallBack = config.onPlayCallBack;
-    this.wordCallback = config.wordCallback;
+    this.endSpeechCallback = config.endSpeechCallback; //emitted when speech is finished
+    this.startSpeechCallback = config.startSpeechCallback; //emitted when speech first begins
+    this.ssmlCallback = config.ssmlCallback; //emitted when an ssml is handled
+    this.sentenceCallback = config.sentenceCallback; //emitted on new sentence begins
+    this.onStopCallback = config.onStopCallBack; //emitted when speech stops playing
+    this.onPlayCallBack = config.onPlayCallBack; //emitted when speech start playing
+    this.wordCallback = config.wordCallback; //emitted on new word
 
     this.isSpeechPlaying = false;
     this.isSpeechFinished = true;
@@ -867,11 +867,12 @@ sumerian.GesturedSpeech = function (config = {
         }
 
         this.speechBody = getValidText(text, this.language, this.autoGesture);
-        updateSpeech(this.speech, this.host, this.speechBody, this.voice);
+        this.updateConfig();
     };
 
     this.setVoice = (voice) => {
         this.voice = getValidVoice(voice);
+        this.updateConfig();
     };
 
     this.updateConfig = () => {
@@ -890,6 +891,7 @@ sumerian.GesturedSpeech = function (config = {
             this.setText(speech);
         }
 
+        //check to prevent multiple speeches from same host overlapping
         if (this.isSpeechPlaying) {
             setTimeout(() => {
                 this.play();
